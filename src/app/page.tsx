@@ -338,48 +338,47 @@ export default function Home() {
 
       {/* ═══════════ UPCOMING EVENT — CINEMATIC ═══════════ */}
       <section style={{ padding: "clamp(60px, 8vw, 100px) 0", background: "#fff" }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 24px" }}>
+        <div className="site-container">
           <div className="reveal" style={{ textAlign: "center", marginBottom: "48px" }}>
             <h2 style={{ fontFamily: serif, fontSize: "clamp(28px, 4vw, 42px)", fontWeight: 400, color: "#1A1A1A" }}>Upcoming Event</h2>
             <div style={{ width: "40px", height: "2px", background: "linear-gradient(90deg, transparent, #B8860B, transparent)", margin: "16px auto 0" }} />
           </div>
           {upcomingEvents.map((ev) => (
-            <Link key={ev.title} href={ev.href || "/events"} className="reveal activity-card" style={{ display: "block", textDecoration: "none", overflow: "hidden" }}>
-              <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", marginBottom: "28px" }}>
-                <Image src={ev.image} alt={ev.title} fill className="object-cover" sizes="800px" />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)" }} />
-                <div style={{ position: "absolute", bottom: "20px", left: "24px", background: "#1A2F2F", color: "#fff", padding: "10px 20px", fontSize: "13px", fontWeight: 600, letterSpacing: "0.5px" }}>
+            <Link key={ev.title} href={ev.href || "/events"} className="reveal activity-card" style={{ display: "flex", textDecoration: "none", overflow: "hidden", maxWidth: "1200px", margin: "0 auto", background: "#fff", boxShadow: "0 8px 30px rgba(0,0,0,0.08)", minHeight: "380px" }}>
+              <div style={{ position: "relative", width: "55%", flexShrink: 0, overflow: "hidden" }}>
+                <Image src={ev.image} alt={ev.title} fill className="object-cover transition-transform duration-500" sizes="(max-width: 768px) 100vw, 660px" />
+                <div style={{ position: "absolute", bottom: "24px", left: "24px", background: "#1A2F2F", color: "#fff", padding: "12px 22px", fontSize: "14px", fontWeight: 600, letterSpacing: "0.5px" }}>
                   {ev.date}
                 </div>
               </div>
-              <div style={{ textAlign: "center" }}>
-                <div style={{ color: "#B8860B", fontSize: "11px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "3px", marginBottom: "12px" }}>Upcoming</div>
-                <h3 style={{ fontFamily: serif, fontSize: "clamp(22px, 3vw, 32px)", fontWeight: 500, color: "#1A1A1A", marginBottom: "12px" }}>{ev.title}</h3>
-                <p style={{ fontSize: "15px", color: "#7A756D", lineHeight: 1.7, maxWidth: "550px", margin: "0 auto 24px" }}>{ev.desc}</p>
-                <span className="btn-orange" style={{ display: "inline-block" }}>View Details & Register</span>
+              <div style={{ padding: "clamp(32px, 4vw, 60px)", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                <div style={{ color: "#B8860B", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "3px", marginBottom: "16px" }}>Upcoming</div>
+                <h3 style={{ fontFamily: serif, fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 500, color: "#1A1A1A", marginBottom: "20px", lineHeight: 1.2 }}>{ev.title}</h3>
+                <p style={{ fontSize: "16px", color: "#5A5650", lineHeight: 1.8, marginBottom: "28px" }}>{ev.desc}</p>
+                <span className="btn-orange" style={{ display: "inline-block", alignSelf: "flex-start" }}>View Details & Register</span>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* ═══════════ RECENT EVENTS — VERTICAL STACK ═══════════ */}
+      {/* ═══════════ RECENT EVENTS — 3-COL GRID ═══════════ */}
       <section style={{ padding: "clamp(50px, 6vw, 80px) 0", background: "#F0EBE1" }}>
-        <div style={{ maxWidth: "700px", margin: "0 auto", padding: "0 24px" }}>
+        <div className="site-container">
           <div className="reveal" style={{ textAlign: "center", marginBottom: "48px" }}>
             <h2 style={{ fontFamily: serif, fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 400, color: "#1A1A1A" }}>Recent Events</h2>
             <div style={{ width: "40px", height: "2px", background: "linear-gradient(90deg, transparent, #B8860B, transparent)", margin: "16px auto 0" }} />
           </div>
-          <div className="stagger-children" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <div className="stagger-children grid-3col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "32px", maxWidth: "1200px", margin: "0 auto" }}>
             {recentEvents.map((ev) => (
-              <div key={ev.title} className="reveal activity-card" style={{ background: "#fff", display: "flex", gap: "0", overflow: "hidden" }}>
-                <div style={{ position: "relative", width: "200px", minHeight: "140px", flexShrink: 0, overflow: "hidden" }}>
-                  <Image src={ev.image} alt={ev.title} fill className="object-cover" sizes="200px" />
+              <div key={ev.title} className="reveal activity-card" style={{ background: "#fff", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                <div style={{ position: "relative", width: "100%", aspectRatio: "16/10", overflow: "hidden" }}>
+                  <Image src={ev.image} alt={ev.title} fill className="object-cover transition-transform duration-500" sizes="(max-width: 768px) 100vw, 380px" />
                 </div>
-                <div style={{ padding: "24px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                  <div style={{ fontSize: "11px", color: "#B8860B", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: "8px" }}>{ev.date}</div>
-                  <h4 style={{ fontSize: "17px", fontWeight: 600, color: "#1A1A1A", lineHeight: 1.4, marginBottom: "6px" }}>{ev.title}</h4>
-                  <p style={{ fontSize: "13px", color: "#7A756D", lineHeight: 1.6 }}>{ev.desc}</p>
+                <div style={{ padding: "26px 24px 28px", flex: 1, display: "flex", flexDirection: "column" }}>
+                  <div style={{ fontSize: "11px", color: "#B8860B", fontWeight: 700, textTransform: "uppercase", letterSpacing: "2px", marginBottom: "10px" }}>{ev.date}</div>
+                  <h4 style={{ fontFamily: serif, fontSize: "20px", fontWeight: 600, color: "#1A1A1A", lineHeight: 1.3, marginBottom: "10px" }}>{ev.title}</h4>
+                  <p style={{ fontSize: "14px", color: "#7A756D", lineHeight: 1.7 }}>{ev.desc}</p>
                 </div>
               </div>
             ))}
@@ -424,28 +423,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════ ACTIVITIES — VERTICAL STORY CARDS ═══════════ */}
+      {/* ═══════════ ACTIVITIES — EDITORIAL ALTERNATING ═══════════ */}
       <section style={{ padding: "clamp(60px, 8vw, 100px) 0", background: "#F8F5EF" }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 24px" }}>
+        <div className="site-container">
           <div className="reveal" style={{ textAlign: "center", marginBottom: "50px" }}>
             <h2 style={{ fontFamily: serif, fontSize: "clamp(28px, 4vw, 42px)", fontWeight: 400, color: "#1A1A1A" }}>Activities</h2>
             <div style={{ width: "40px", height: "2px", background: "linear-gradient(90deg, transparent, #B8860B, transparent)", margin: "16px auto 0" }} />
           </div>
-          <div className="stagger-children" style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+          <div className="stagger-children" style={{ display: "flex", flexDirection: "column", gap: "40px", maxWidth: "1200px", margin: "0 auto" }}>
             {activities.slice(0, 4).map((act, idx) => (
-              <Link key={act.title} href={act.href} className="reveal activity-card" style={{ display: "flex", flexDirection: idx % 2 === 0 ? "row" : "row-reverse", background: "#fff", overflow: "hidden", textDecoration: "none", minHeight: "220px" }}>
-                <div style={{ position: "relative", width: "45%", flexShrink: 0, overflow: "hidden" }}>
-                  <Image src={act.image} alt={act.title} fill className="object-cover transition-transform duration-500" sizes="360px" />
+              <Link key={act.title} href={act.href} className="reveal activity-card" style={{ display: "flex", flexDirection: idx % 2 === 0 ? "row" : "row-reverse", background: "#fff", overflow: "hidden", textDecoration: "none", minHeight: "300px" }}>
+                <div style={{ position: "relative", width: "50%", flexShrink: 0, overflow: "hidden" }}>
+                  <Image src={act.image} alt={act.title} fill className="object-cover transition-transform duration-500" sizes="(max-width: 768px) 100vw, 600px" />
                 </div>
-                <div style={{ padding: "clamp(20px, 3vw, 36px)", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                  <h4 style={{ fontFamily: serif, fontSize: "clamp(18px, 2vw, 24px)", fontWeight: 500, color: "#1A1A1A", lineHeight: 1.3, marginBottom: "12px" }}>{act.title}</h4>
-                  <p style={{ fontSize: "14px", color: "#7A756D", lineHeight: 1.7, marginBottom: "20px" }}>{act.excerpt}</p>
-                  <span style={{ color: "#B8860B", fontSize: "12px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1.5px" }}>Read More &rsaquo;</span>
+                <div style={{ padding: "clamp(28px, 4vw, 56px)", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <h4 style={{ fontFamily: serif, fontSize: "clamp(22px, 2.4vw, 30px)", fontWeight: 500, color: "#1A1A1A", lineHeight: 1.25, marginBottom: "16px" }}>{act.title}</h4>
+                  <p style={{ fontSize: "15px", color: "#5A5650", lineHeight: 1.8, marginBottom: "24px" }}>{act.excerpt}</p>
+                  <span style={{ color: "#B8860B", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "2px" }}>Read More &rsaquo;</span>
                 </div>
               </Link>
             ))}
           </div>
-          <div className="reveal" style={{ textAlign: "center", marginTop: "40px" }}>
+          <div className="reveal" style={{ textAlign: "center", marginTop: "48px" }}>
             <Link href="/activities" className="btn-orange">View All Activities &nbsp;&rsaquo;</Link>
           </div>
         </div>
@@ -467,7 +466,7 @@ export default function Home() {
 
       {/* ═══════════ GALLERY ═══════════ */}
       <section style={{ padding: "clamp(60px, 8vw, 90px) 0", background: "#fff" }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 24px" }}>
+        <div className="site-container" style={{ maxWidth: "1100px" }}>
           <div className="reveal" style={{ textAlign: "center", marginBottom: "44px" }}>
             <h2 style={{ fontFamily: serif, fontSize: "clamp(28px, 4vw, 42px)", fontWeight: 400, color: "#1A1A1A" }}>Gallery</h2>
             <div style={{ width: "40px", height: "2px", background: "linear-gradient(90deg, transparent, #B8860B, transparent)", margin: "16px auto 0" }} />
