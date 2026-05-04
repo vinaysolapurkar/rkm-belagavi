@@ -26,7 +26,7 @@ export default function AshramaPage() {
             <path d="M12 2 L13.5 8.5 L20 10 L13.5 11.5 L12 18 L10.5 11.5 L4 10 L10.5 8.5 Z" />
           </svg>
           <p style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "#B8860B", margin: 0 }}>
-            Fort, Belagavi
+            The Two Centres
           </p>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="#B8860B" aria-hidden>
             <path d="M12 2 L13.5 8.5 L20 10 L13.5 11.5 L12 18 L10.5 11.5 L4 10 L10.5 8.5 Z" />
@@ -39,7 +39,7 @@ export default function AshramaPage() {
             className="reveal"
             style={{
               position: "relative",
-              maxWidth: "1280px",
+              maxWidth: "1100px",
               margin: "0 auto",
               padding: "14px",
               background: "linear-gradient(135deg, #B8860B 0%, #D4A547 50%, #B8860B 100%)",
@@ -48,15 +48,17 @@ export default function AshramaPage() {
           >
             {/* inner cream frame */}
             <div style={{ background: "#F8F5EF", padding: "10px", position: "relative" }}>
-              {/* image */}
-              <div style={{ position: "relative", overflow: "hidden", aspectRatio: "21 / 9", background: "#1A2F2F" }}>
+              {/* image — full composite shown as-is. Left side: Universal Temple at Fort.
+                  Right side: Swami Vivekananda Memorial sub-centre at Risaldar Galli. */}
+              <div style={{ position: "relative", overflow: "hidden", background: "#1A2F2F" }}>
                 <Image
                   src="/images/home-ashrama.jpg"
-                  alt="Ramakrishna Mission Ashrama at Fort, Belagavi — the Universal Temple and the historic Haripada Mitra house"
-                  fill
+                  alt="The two centres of the Ashrama — the Universal Temple at Fort (left) and the Swami Vivekananda Memorial sub-centre at Risaldar Galli (right)"
+                  width={1740}
+                  height={760}
                   priority
-                  sizes="(max-width: 1280px) 100vw, 1280px"
-                  style={{ objectFit: "cover", objectPosition: "center 60%" }}
+                  sizes="(max-width: 1100px) 100vw, 1100px"
+                  style={{ width: "100%", height: "auto", display: "block" }}
                 />
 
                 {/* corner ornaments */}
@@ -112,14 +114,14 @@ export default function AshramaPage() {
                 }}>
                   <p style={{
                     fontFamily: '"Cormorant Garamond", Georgia, serif',
-                    fontSize: "clamp(18px, 2.4vw, 26px)",
+                    fontSize: "clamp(16px, 2vw, 22px)",
                     fontWeight: 500,
                     color: "#F8F5EF",
                     letterSpacing: "1px",
                     margin: 0,
-                    lineHeight: 1.2,
+                    lineHeight: 1.3,
                   }}>
-                    Ramakrishna Mission Ashrama
+                    The Universal Temple at Fort &nbsp;&middot;&nbsp; The Swami Vivekananda Memorial
                   </p>
                   <p style={{
                     fontSize: "11px",
@@ -129,7 +131,7 @@ export default function AshramaPage() {
                     color: "#D4A547",
                     margin: "4px 0 0",
                   }}>
-                    Fort &middot; Belagavi
+                    The Two Centres of the Ashrama, Belagavi
                   </p>
                 </div>
               </div>
@@ -143,13 +145,15 @@ export default function AshramaPage() {
             fontSize: "14px",
             color: "#7A756D",
             fontStyle: "italic",
-            maxWidth: "640px",
+            maxWidth: "720px",
             marginLeft: "auto",
             marginRight: "auto",
             lineHeight: 1.7,
           }}>
-            The Universal Temple and the historic Haripada Mitra House &mdash; where Swami
-            Vivekananda stayed for nine days in October 1892.
+            <strong style={{ color: "#5A5650", fontStyle: "normal", fontWeight: 600 }}>Left:</strong> the
+            Universal Temple at the Fort campus &mdash; the main Ashrama centre.{" "}
+            <strong style={{ color: "#5A5650", fontStyle: "normal", fontWeight: 600 }}>Right:</strong> the
+            Swami Vivekananda Memorial sub-centre at Risaldar Galli, where Swamiji stayed in October 1892.
           </p>
         </div>
       </section>
