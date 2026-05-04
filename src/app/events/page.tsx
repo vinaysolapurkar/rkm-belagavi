@@ -213,13 +213,19 @@ export default function EventsPage() {
             discourses. Devotees are warmly invited to participate.
           </p>
 
-          <div style={{ maxWidth: "780px", margin: "0 auto", background: "#fff", border: "1px solid #E8E2D8", boxShadow: "0 4px 20px rgba(26,47,47,0.06)" }}>
+          <div style={{ maxWidth: "820px", margin: "0 auto", background: "#fff", border: "1px solid #E8E2D8", boxShadow: "0 4px 20px rgba(26,47,47,0.06)" }}>
             {[
-              { date: "8 March 2026", day: "Sunday", title: "Sri Ramakrishna Jayanti", desc: "Birth anniversary of Sri Ramakrishna Paramahamsa" },
-              { date: "26 December 2026", day: "Saturday", title: "Sri Sarada Devi Jayanti", desc: "Birth anniversary of the Holy Mother Sri Sarada Devi" },
-              { date: "12 January 2027", day: "Tuesday", title: "Swami Vivekananda Jayanti", desc: "Birth anniversary of Swami Vivekananda — observed as National Youth Day" },
-              { date: "23 February 2027", day: "Tuesday", title: "Swami Brahmananda Jayanti", desc: "Birth anniversary of Swami Brahmananda, first President of the Ramakrishna Order" },
-              { date: "27 January 2027", day: "Wednesday", title: "Kalpataru Day", desc: "Commemoration of Sri Ramakrishna's blessing of devotees at Cossipore" },
+              { date: "29 July 2026", day: "Wednesday", title: "Guru Purnima", desc: "Sacred day honouring the Guru and the lineage of spiritual teachers" },
+              { date: "4 September 2026", day: "Friday", title: "Sri Krishna Janmashtami", desc: "Birth anniversary of Bhagavan Sri Krishna" },
+              { date: "14 September 2026", day: "Monday", title: "Vinayaka Chaturthi", desc: "Birth anniversary of Lord Ganesha" },
+              { date: "19 October 2026", day: "Monday", title: "Durgashtami", desc: "Eighth day of Navaratri — special worship of Goddess Durga" },
+              { date: "8 November 2026", day: "Sunday", title: "Kali Puja", desc: "Worship of the Divine Mother Kali on the new-moon night of Kartika" },
+              { date: "13 December 2026", day: "Sunday", title: "Sri Sarada Devi Jayanti", desc: "Birth anniversary of the Holy Mother Sri Sarada Devi" },
+              { date: "1 January 2027", day: "Friday", title: "Kalpataru Day", desc: "Commemoration of Sri Ramakrishna's blessing of devotees at Cossipore Garden House (1886)" },
+              { date: "12 January 2027", day: "Tuesday", title: "National Youth Day", desc: "Birth anniversary of Swami Vivekananda — observed nationally" },
+              { date: "28 January 2027", day: "Thursday", title: "Swami Vivekananda Jayanti", desc: "Tithi-based birth anniversary of Swami Vivekananda" },
+              { date: "6 March 2027", day: "Saturday", title: "Mahashivaratri", desc: "The Great Night of Lord Shiva — observed with all-night vigil and worship" },
+              { date: "10 March 2027", day: "Wednesday", title: "Sri Ramakrishna Jayanti", desc: "Birth anniversary of Sri Ramakrishna Paramahamsa" },
             ].map((j, idx, arr) => (
               <div
                 key={j.title}
