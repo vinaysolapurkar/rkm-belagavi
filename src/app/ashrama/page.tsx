@@ -17,26 +17,140 @@ export default function AshramaPage() {
         ]}
       />
 
-      {/* Hero Image — cinematic full-bleed */}
-      <section style={{ position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "relative", width: "100%", maxHeight: "500px", overflow: "hidden" }}>
-          <Image
-            src="/images/home-ashrama.jpg"
-            alt="Ramakrishna Mission Ashrama at Fort, Belagavi"
-            width={1400}
-            height={700}
-            style={{ width: "100%", height: "auto", display: "block" }}
-            priority
-            sizes="100vw"
-          />
-          <div style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "120px",
-            background: "linear-gradient(to top, #F8F5EF, transparent)",
-          }} />
+      {/* Hero Image — cinematic framed centerpiece */}
+      <section style={{ position: "relative", padding: "60px 0 30px", background: "linear-gradient(180deg, #F3EDE4 0%, #F8F5EF 100%)" }}>
+        {/* decorative top ornament */}
+        <div className="reveal" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", marginBottom: "40px" }}>
+          <div style={{ width: "60px", height: "1px", background: "linear-gradient(90deg, transparent, #B8860B)" }} />
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#B8860B" aria-hidden>
+            <path d="M12 2 L13.5 8.5 L20 10 L13.5 11.5 L12 18 L10.5 11.5 L4 10 L10.5 8.5 Z" />
+          </svg>
+          <p style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "#B8860B", margin: 0 }}>
+            Fort, Belagavi
+          </p>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#B8860B" aria-hidden>
+            <path d="M12 2 L13.5 8.5 L20 10 L13.5 11.5 L12 18 L10.5 11.5 L4 10 L10.5 8.5 Z" />
+          </svg>
+          <div style={{ width: "60px", height: "1px", background: "linear-gradient(90deg, #B8860B, transparent)" }} />
+        </div>
+
+        <div className="site-container">
+          <div
+            className="reveal"
+            style={{
+              position: "relative",
+              maxWidth: "1280px",
+              margin: "0 auto",
+              padding: "14px",
+              background: "linear-gradient(135deg, #B8860B 0%, #D4A547 50%, #B8860B 100%)",
+              boxShadow: "0 30px 80px rgba(26,47,47,0.18), 0 8px 25px rgba(184,134,11,0.15)",
+            }}
+          >
+            {/* inner cream frame */}
+            <div style={{ background: "#F8F5EF", padding: "10px", position: "relative" }}>
+              {/* image */}
+              <div style={{ position: "relative", overflow: "hidden", aspectRatio: "21 / 9", background: "#1A2F2F" }}>
+                <Image
+                  src="/images/home-ashrama.jpg"
+                  alt="Ramakrishna Mission Ashrama at Fort, Belagavi — the Universal Temple and the historic Haripada Mitra house"
+                  fill
+                  priority
+                  sizes="(max-width: 1280px) 100vw, 1280px"
+                  style={{ objectFit: "cover", objectPosition: "center 60%" }}
+                />
+
+                {/* corner ornaments */}
+                {[
+                  { top: 12, left: 12, rotate: 0 },
+                  { top: 12, right: 12, rotate: 90 },
+                  { bottom: 12, right: 12, rotate: 180 },
+                  { bottom: 12, left: 12, rotate: 270 },
+                ].map((c, i) => (
+                  <svg
+                    key={i}
+                    width="38"
+                    height="38"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    aria-hidden
+                    style={{
+                      position: "absolute",
+                      top: c.top,
+                      bottom: c.bottom,
+                      left: c.left,
+                      right: c.right,
+                      transform: `rotate(${c.rotate}deg)`,
+                      filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.4))",
+                    }}
+                  >
+                    <path d="M2 2 L18 2 M2 2 L2 18" stroke="#D4A547" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="2" cy="2" r="3" fill="#B8860B" />
+                  </svg>
+                ))}
+
+                {/* subtle vignette */}
+                <div style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.35) 100%)",
+                  pointerEvents: "none",
+                }} />
+
+                {/* nameplate caption */}
+                <div style={{
+                  position: "absolute",
+                  bottom: "24px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  background: "rgba(26,47,47,0.88)",
+                  backdropFilter: "blur(8px)",
+                  padding: "14px 32px",
+                  borderTop: "2px solid #B8860B",
+                  borderBottom: "2px solid #B8860B",
+                  textAlign: "center",
+                  maxWidth: "92%",
+                }}>
+                  <p style={{
+                    fontFamily: '"Cormorant Garamond", Georgia, serif',
+                    fontSize: "clamp(18px, 2.4vw, 26px)",
+                    fontWeight: 500,
+                    color: "#F8F5EF",
+                    letterSpacing: "1px",
+                    margin: 0,
+                    lineHeight: 1.2,
+                  }}>
+                    Ramakrishna Mission Ashrama
+                  </p>
+                  <p style={{
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    letterSpacing: "3px",
+                    textTransform: "uppercase",
+                    color: "#D4A547",
+                    margin: "4px 0 0",
+                  }}>
+                    Fort &middot; Belagavi
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* caption below */}
+          <p className="reveal" style={{
+            textAlign: "center",
+            marginTop: "26px",
+            fontSize: "14px",
+            color: "#7A756D",
+            fontStyle: "italic",
+            maxWidth: "640px",
+            marginLeft: "auto",
+            marginRight: "auto",
+            lineHeight: 1.7,
+          }}>
+            The Universal Temple and the historic Haripada Mitra House &mdash; where Swami
+            Vivekananda stayed for nine days in October 1892.
+          </p>
         </div>
       </section>
 
