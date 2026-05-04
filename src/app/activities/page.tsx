@@ -3,6 +3,7 @@ import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import SubpageLayout from "@/components/SubpageLayout";
+import ZoomableImage from "@/components/ZoomableImage";
 
 export const metadata = {
   title: "Activities – RAMAKRISHNA MISSION ASHRAMA, BELAGAVI",
@@ -152,12 +153,11 @@ export default function ActivitiesPage() {
                   border: "1px solid #E8E2D8",
                   boxShadow: "0 8px 30px rgba(26,47,47,0.1)",
                 }}>
-                  <Image
+                  <ZoomableImage
                     src="/images/kali-puja.jpg"
-                    alt="Worship at the Universal Temple"
+                    alt="Worship at the Universal Temple — click to zoom"
                     width={400}
                     height={280}
-                    style={{ width: "100%", height: "auto", display: "block" }}
                     sizes="400px"
                   />
                 </div>

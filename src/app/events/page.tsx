@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import SubpageLayout from "@/components/SubpageLayout";
+import AddToCalendar from "@/components/AddToCalendar";
 
 export const metadata = {
   title: "Events – RAMAKRISHNA MISSION ASHRAMA, BELAGAVI",
@@ -102,8 +103,7 @@ export default function EventsPage() {
 
           <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "32px" }}>
             {/* Silver Jubilee */}
-            <Link
-              href="/silver-jubilee"
+            <div
               className="reveal activity-card"
               style={{
                 display: "grid",
@@ -113,8 +113,6 @@ export default function EventsPage() {
                 background: "#fff",
                 border: "1px solid #E8E2D8",
                 borderTop: "3px solid #B8860B",
-                overflow: "hidden",
-                textDecoration: "none",
               }}
             >
               <div style={{ position: "relative", overflow: "hidden" }}>
@@ -138,20 +136,29 @@ export default function EventsPage() {
                 }}>
                   Silver Jubilee Concluding Celebrations
                 </h3>
-                <p style={{ fontSize: "15px", color: "#4A4743", lineHeight: 1.8, marginBottom: "16px" }}>
+                <p style={{ fontSize: "15px", color: "#4A4743", lineHeight: 1.8, marginBottom: "20px" }}>
                   Grand concluding celebrations marking 25 years of the Ashrama&rsquo;s
                   service to the community. Three days of spiritual programmes, cultural
                   events, and community gatherings at the Ashrama premises at Fort, Belagavi.
                 </p>
-                <span style={{ fontSize: "13px", fontWeight: 600, color: "#B8860B", textTransform: "uppercase", letterSpacing: "1px" }}>
-                  View Details &amp; Register &rsaquo;
-                </span>
+                <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
+                  <Link href="/silver-jubilee" style={{ fontSize: "13px", fontWeight: 700, color: "#B8860B", textTransform: "uppercase", letterSpacing: "1.5px", textDecoration: "none", borderBottom: "1px solid rgba(184,134,11,0.4)", paddingBottom: "2px" }}>
+                    View Details &amp; Register &rsaquo;
+                  </Link>
+                  <AddToCalendar
+                    title="Silver Jubilee Concluding Celebrations — Ramakrishna Mission Ashrama, Belagavi"
+                    description="Grand concluding celebrations marking 25 years of the Ashrama's service to the community. Three days of spiritual programmes, cultural events, and community gatherings."
+                    location="Ramakrishna Mission Ashrama, Fort, Belagavi 590016, Karnataka, India"
+                    startDate="2026-05-08"
+                    endDate="2026-05-11"
+                    allDay
+                  />
+                </div>
               </div>
-            </Link>
+            </div>
 
             {/* Japa Yajna */}
-            <Link
-              href="/activities/japa-yajna"
+            <div
               className="reveal activity-card"
               style={{
                 display: "grid",
@@ -161,8 +168,6 @@ export default function EventsPage() {
                 background: "#fff",
                 border: "1px solid #E8E2D8",
                 borderTop: "3px solid #B8860B",
-                overflow: "hidden",
-                textDecoration: "none",
               }}
             >
               <div style={{ position: "relative", overflow: "hidden" }}>
@@ -186,17 +191,27 @@ export default function EventsPage() {
                 }}>
                   Japa Yajna
                 </h3>
-                <p style={{ fontSize: "15px", color: "#4A4743", lineHeight: 1.8, marginBottom: "16px" }}>
+                <p style={{ fontSize: "15px", color: "#4A4743", lineHeight: 1.8, marginBottom: "20px" }}>
                   A five-day spiritual camp for devotees who have taken initiation (Mantra
                   Deeksha). Participants complete telling their beads one hundred thousand
                   times in the serene surroundings of the Ashrama. Food and stay arranged
                   without any charge.
                 </p>
-                <span style={{ fontSize: "13px", fontWeight: 600, color: "#B8860B", textTransform: "uppercase", letterSpacing: "1px" }}>
-                  Learn More &rsaquo;
-                </span>
+                <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
+                  <Link href="/activities/japa-yajna" style={{ fontSize: "13px", fontWeight: 700, color: "#B8860B", textTransform: "uppercase", letterSpacing: "1.5px", textDecoration: "none", borderBottom: "1px solid rgba(184,134,11,0.4)", paddingBottom: "2px" }}>
+                    Learn More &rsaquo;
+                  </Link>
+                  <AddToCalendar
+                    title="Japa Yajna — Ramakrishna Mission Ashrama, Belagavi"
+                    description="A five-day spiritual camp for devotees who have taken initiation (Mantra Deeksha). Participants complete one hundred thousand japas in the serene surroundings of the Ashrama. Food and stay arranged without any charge."
+                    location="Ramakrishna Mission Ashrama, Fort, Belagavi 590016, Karnataka, India"
+                    startDate="2026-06-10"
+                    endDate="2026-06-15"
+                    allDay
+                  />
+                </div>
               </div>
-            </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -213,28 +228,32 @@ export default function EventsPage() {
             discourses. Devotees are warmly invited to participate.
           </p>
 
-          <div style={{ maxWidth: "820px", margin: "0 auto", background: "#fff", border: "1px solid #E8E2D8", boxShadow: "0 4px 20px rgba(26,47,47,0.06)" }}>
+          <div style={{ maxWidth: "880px", margin: "0 auto", background: "#fff", border: "1px solid #E8E2D8", boxShadow: "0 4px 20px rgba(26,47,47,0.06)" }}>
             {[
-              { date: "29 July 2026", day: "Wednesday", title: "Guru Purnima", desc: "Sacred day honouring the Guru and the lineage of spiritual teachers" },
-              { date: "4 September 2026", day: "Friday", title: "Sri Krishna Janmashtami", desc: "Birth anniversary of Bhagavan Sri Krishna" },
-              { date: "14 September 2026", day: "Monday", title: "Vinayaka Chaturthi", desc: "Birth anniversary of Lord Ganesha" },
-              { date: "19 October 2026", day: "Monday", title: "Durgashtami", desc: "Eighth day of Navaratri — special worship of Goddess Durga" },
-              { date: "8 November 2026", day: "Sunday", title: "Kali Puja", desc: "Worship of the Divine Mother Kali on the new-moon night of Kartika" },
-              { date: "13 December 2026", day: "Sunday", title: "Sri Sarada Devi Jayanti", desc: "Birth anniversary of the Holy Mother Sri Sarada Devi" },
-              { date: "1 January 2027", day: "Friday", title: "Kalpataru Day", desc: "Commemoration of Sri Ramakrishna's blessing of devotees at Cossipore Garden House (1886)" },
-              { date: "12 January 2027", day: "Tuesday", title: "National Youth Day", desc: "Birth anniversary of Swami Vivekananda — observed nationally" },
-              { date: "28 January 2027", day: "Thursday", title: "Swami Vivekananda Jayanti", desc: "Tithi-based birth anniversary of Swami Vivekananda" },
-              { date: "6 March 2027", day: "Saturday", title: "Mahashivaratri", desc: "The Great Night of Lord Shiva — observed with all-night vigil and worship" },
-              { date: "10 March 2027", day: "Wednesday", title: "Sri Ramakrishna Jayanti", desc: "Birth anniversary of Sri Ramakrishna Paramahamsa" },
-            ].map((j, idx, arr) => (
+              { iso: "2026-07-29", date: "29 July 2026", day: "Wednesday", title: "Guru Purnima", desc: "Sacred day honouring the Guru and the lineage of spiritual teachers" },
+              { iso: "2026-09-04", date: "4 September 2026", day: "Friday", title: "Sri Krishna Janmashtami", desc: "Birth anniversary of Bhagavan Sri Krishna" },
+              { iso: "2026-09-14", date: "14 September 2026", day: "Monday", title: "Vinayaka Chaturthi", desc: "Birth anniversary of Lord Ganesha" },
+              { iso: "2026-10-19", date: "19 October 2026", day: "Monday", title: "Durgashtami", desc: "Eighth day of Navaratri — special worship of Goddess Durga" },
+              { iso: "2026-11-08", date: "8 November 2026", day: "Sunday", title: "Kali Puja", desc: "Worship of the Divine Mother Kali on the new-moon night of Kartika" },
+              { iso: "2026-12-13", date: "13 December 2026", day: "Sunday", title: "Sri Sarada Devi Jayanti", desc: "Birth anniversary of the Holy Mother Sri Sarada Devi" },
+              { iso: "2027-01-01", date: "1 January 2027", day: "Friday", title: "Kalpataru Day", desc: "Commemoration of Sri Ramakrishna's blessing of devotees at Cossipore Garden House (1886)" },
+              { iso: "2027-01-12", date: "12 January 2027", day: "Tuesday", title: "National Youth Day", desc: "Birth anniversary of Swami Vivekananda — observed nationally" },
+              { iso: "2027-01-28", date: "28 January 2027", day: "Thursday", title: "Swami Vivekananda Jayanti", desc: "Tithi-based birth anniversary of Swami Vivekananda" },
+              { iso: "2027-03-06", date: "6 March 2027", day: "Saturday", title: "Mahashivaratri", desc: "The Great Night of Lord Shiva — observed with all-night vigil and worship" },
+              { iso: "2027-03-10", date: "10 March 2027", day: "Wednesday", title: "Sri Ramakrishna Jayanti", desc: "Birth anniversary of Sri Ramakrishna Paramahamsa" },
+            ].map((j, idx, arr) => {
+              const next = new Date(j.iso);
+              next.setUTCDate(next.getUTCDate() + 1);
+              const endIso = next.toISOString().slice(0, 10);
+              return (
               <div
                 key={j.title}
                 className="reveal"
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "200px 1fr",
-                  gap: "24px",
-                  padding: "22px 28px",
+                  gridTemplateColumns: "180px 1fr auto",
+                  gap: "20px",
+                  padding: "20px 28px",
                   borderBottom: idx < arr.length - 1 ? "1px solid #E8E2D8" : "none",
                   alignItems: "center",
                 }}
@@ -273,8 +292,19 @@ export default function EventsPage() {
                     {j.desc}
                   </p>
                 </div>
+                <AddToCalendar
+                  title={`${j.title} — Ramakrishna Mission Ashrama, Belagavi`}
+                  description={`${j.desc}. Observed at Ramakrishna Mission Ashrama, Belagavi with special worship, devotional music, and discourses.`}
+                  location="Ramakrishna Mission Ashrama, Fort, Belagavi 590016, Karnataka, India"
+                  startDate={j.iso}
+                  endDate={endIso}
+                  allDay
+                  buttonLabel="Save"
+                  buttonStyle={{ padding: "8px 14px", fontSize: "11px", letterSpacing: "1.5px" }}
+                />
               </div>
-            ))}
+              );
+            })}
           </div>
           <p className="reveal" style={{ maxWidth: "780px", margin: "30px auto 0", fontSize: "13px", color: "#7A756D", textAlign: "center", fontStyle: "italic" }}>
             Dates are based on the traditional Tithi calendar and may vary slightly each year.
