@@ -141,6 +141,26 @@ export default function MemorialPage() {
               of Belagavi&apos;s living connection to Swami Vivekananda.
             </p>
           </div>
+
+          {/* Before / After photos */}
+          <div className="reveal" style={{ maxWidth: "1000px", margin: "50px auto 0", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px" }}>
+            <div style={{ textAlign: "center" }}>
+              <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "#D4C078", marginBottom: "12px" }}>
+                Before Restoration
+              </p>
+              <div style={{ overflow: "hidden", border: "2px solid rgba(184,134,11,0.4)", boxShadow: "0 12px 35px rgba(0,0,0,0.4)" }}>
+                <Image src="/images/before-restoration.jpg" alt="Haripada Mitra's house before restoration" width={500} height={350} style={{ width: "100%", height: "auto", display: "block" }} sizes="500px" />
+              </div>
+            </div>
+            <div style={{ textAlign: "center" }}>
+              <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "#D4C078", marginBottom: "12px" }}>
+                After Restoration
+              </p>
+              <div style={{ overflow: "hidden", border: "2px solid rgba(184,134,11,0.4)", boxShadow: "0 12px 35px rgba(0,0,0,0.4)" }}>
+                <Image src="/images/after-restoration.jpg" alt="The Swami Vivekananda Memorial after restoration" width={500} height={350} style={{ width: "100%", height: "auto", display: "block" }} sizes="500px" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -166,23 +186,64 @@ export default function MemorialPage() {
             </p>
           </div>
 
-          {/* Feature highlights */}
-          <div className="reveal" style={{ maxWidth: "780px", margin: "40px auto 0", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
-            {[
-              { label: "Shrine Room", desc: "Swamiji's original room preserved with period artifacts" },
-              { label: "Digital Gallery", desc: "Interactive exhibits on Swamiji's life and message" },
-              { label: "AV Theatre", desc: "Seating 30–40, with curated presentations" },
-            ].map((item) => (
-              <div key={item.label} style={{
-                textAlign: "center",
-                padding: "28px 20px",
-                background: "#F3EDE4",
-                borderTop: "3px solid #B8860B",
-              }}>
-                <p style={{ fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: "20px", fontWeight: 600, color: "#1A2F2F", marginBottom: "8px" }}>{item.label}</p>
-                <p style={{ fontSize: "13px", color: "#7A756D", lineHeight: 1.6 }}>{item.desc}</p>
+          {/* Swamiji's Room — featured */}
+          <div className="reveal" style={{ maxWidth: "1000px", margin: "50px auto 30px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px", alignItems: "center" }}>
+            <div style={{ overflow: "hidden", border: "1px solid #E8E2D8", boxShadow: "0 12px 40px rgba(26,47,47,0.12)" }}>
+              <Image src="/images/swamiji-room.jpg" alt="Swamiji's Room — preserved as a shrine" width={500} height={380} style={{ width: "100%", height: "auto", display: "block" }} sizes="500px" />
+            </div>
+            <div>
+              <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>
+                The Heart of the Memorial
+              </p>
+              <h3 style={{ fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: "28px", fontWeight: 600, color: "#1A2F2F", marginBottom: "14px", lineHeight: 1.25 }}>
+                Swamiji&rsquo;s Room
+              </h3>
+              <p style={{ fontSize: "15px", color: "#5A5650", lineHeight: 1.85 }}>
+                The original room where Swami Vivekananda stayed as the guest of Sri Haripada
+                Mitra in October 1892, preserved as a shrine for devotees and visitors.
+              </p>
+            </div>
+          </div>
+
+          {/* Galleries — two photos side by side */}
+          <div className="reveal" style={{ maxWidth: "1000px", margin: "60px auto 30px" }}>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "#B8860B", marginBottom: "10px", textAlign: "center" }}>
+              Exhibits
+            </p>
+            <h3 style={{ fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: "28px", fontWeight: 600, color: "#1A2F2F", marginBottom: "12px", textAlign: "center" }}>
+              Galleries
+            </h3>
+            <p style={{ fontSize: "15px", color: "#5A5650", lineHeight: 1.85, textAlign: "center", maxWidth: "700px", margin: "0 auto 28px" }}>
+              Exhibits on Swamiji&rsquo;s life and message.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+              <div style={{ overflow: "hidden", border: "1px solid #E8E2D8", boxShadow: "0 8px 30px rgba(26,47,47,0.1)" }}>
+                <Image src="/images/memorial-gallery-1.jpg" alt="Galleries — exhibits on Swamiji's life" width={500} height={350} style={{ width: "100%", height: "auto", display: "block" }} sizes="500px" />
               </div>
-            ))}
+              <div style={{ overflow: "hidden", border: "1px solid #E8E2D8", boxShadow: "0 8px 30px rgba(26,47,47,0.1)" }}>
+                <Image src="/images/memorial-gallery-2.jpg" alt="Galleries — exhibits on Swamiji's message" width={500} height={350} style={{ width: "100%", height: "auto", display: "block" }} sizes="500px" />
+              </div>
+            </div>
+          </div>
+
+          {/* AV Theatre */}
+          <div className="reveal" style={{ maxWidth: "1000px", margin: "60px auto 0", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px", alignItems: "center" }}>
+            <div>
+              <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>
+                Audio-Visual Room
+              </p>
+              <h3 style={{ fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: "28px", fontWeight: 600, color: "#1A2F2F", marginBottom: "14px", lineHeight: 1.25 }}>
+                AV Theatre
+              </h3>
+              <p style={{ fontSize: "15px", color: "#5A5650", lineHeight: 1.85 }}>
+                Seating 30 to 40 visitors, the AV Theatre presents curated audio-visual
+                content on Swamiji&rsquo;s life and message &mdash; making the experience
+                engaging for visitors of all ages.
+              </p>
+            </div>
+            <div style={{ overflow: "hidden", border: "1px solid #E8E2D8", boxShadow: "0 12px 40px rgba(26,47,47,0.12)" }}>
+              <Image src="/images/memorial-av-room.jpg" alt="The AV Theatre at the Swami Vivekananda Memorial" width={500} height={380} style={{ width: "100%", height: "auto", display: "block" }} sizes="500px" />
+            </div>
           </div>
         </div>
       </section>

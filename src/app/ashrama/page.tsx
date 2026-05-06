@@ -17,144 +17,20 @@ export default function AshramaPage() {
         ]}
       />
 
-      {/* Hero Image — cinematic framed centerpiece */}
-      <section style={{ position: "relative", padding: "60px 0 30px", background: "linear-gradient(180deg, #F3EDE4 0%, #F8F5EF 100%)" }}>
-        {/* decorative top ornament */}
-        <div className="reveal" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", marginBottom: "40px" }}>
-          <div style={{ width: "60px", height: "1px", background: "linear-gradient(90deg, transparent, #B8860B)" }} />
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#B8860B" aria-hidden>
-            <path d="M12 2 L13.5 8.5 L20 10 L13.5 11.5 L12 18 L10.5 11.5 L4 10 L10.5 8.5 Z" />
-          </svg>
-          <p style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "#B8860B", margin: 0 }}>
-            The Two Centres
-          </p>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#B8860B" aria-hidden>
-            <path d="M12 2 L13.5 8.5 L20 10 L13.5 11.5 L12 18 L10.5 11.5 L4 10 L10.5 8.5 Z" />
-          </svg>
-          <div style={{ width: "60px", height: "1px", background: "linear-gradient(90deg, #B8860B, transparent)" }} />
-        </div>
-
+      {/* Hero — Fort Ashrama */}
+      <section style={{ position: "relative", padding: "50px 0 30px", background: "linear-gradient(180deg, #F3EDE4 0%, #F8F5EF 100%)" }}>
         <div className="site-container">
-          <div
-            className="reveal"
-            style={{
-              position: "relative",
-              maxWidth: "1100px",
-              margin: "0 auto",
-              padding: "14px",
-              background: "linear-gradient(135deg, #B8860B 0%, #D4A547 50%, #B8860B 100%)",
-              boxShadow: "0 30px 80px rgba(26,47,47,0.18), 0 8px 25px rgba(184,134,11,0.15)",
-            }}
-          >
-            {/* inner cream frame */}
-            <div style={{ background: "#F8F5EF", padding: "10px", position: "relative" }}>
-              {/* image — full composite shown as-is. Left side: Universal Temple at Fort.
-                  Right side: Swami Vivekananda Memorial sub-centre at Risaldar Galli. */}
-              <div style={{ position: "relative", overflow: "hidden", background: "#1A2F2F" }}>
-                <Image
-                  src="/images/home-ashrama.jpg"
-                  alt="The two centres of the Ashrama — the Universal Temple at Fort (left) and the Swami Vivekananda Memorial sub-centre at Risaldar Galli (right)"
-                  width={1740}
-                  height={760}
-                  priority
-                  sizes="(max-width: 1100px) 100vw, 1100px"
-                  style={{ width: "100%", height: "auto", display: "block" }}
-                />
-
-                {/* corner ornaments */}
-                {[
-                  { top: 12, left: 12, rotate: 0 },
-                  { top: 12, right: 12, rotate: 90 },
-                  { bottom: 12, right: 12, rotate: 180 },
-                  { bottom: 12, left: 12, rotate: 270 },
-                ].map((c, i) => (
-                  <svg
-                    key={i}
-                    width="38"
-                    height="38"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    aria-hidden
-                    style={{
-                      position: "absolute",
-                      top: c.top,
-                      bottom: c.bottom,
-                      left: c.left,
-                      right: c.right,
-                      transform: `rotate(${c.rotate}deg)`,
-                      filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.4))",
-                    }}
-                  >
-                    <path d="M2 2 L18 2 M2 2 L2 18" stroke="#D4A547" strokeWidth="2" strokeLinecap="round" />
-                    <circle cx="2" cy="2" r="3" fill="#B8860B" />
-                  </svg>
-                ))}
-
-                {/* subtle vignette */}
-                <div style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.35) 100%)",
-                  pointerEvents: "none",
-                }} />
-
-                {/* nameplate caption */}
-                <div style={{
-                  position: "absolute",
-                  bottom: "24px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  background: "rgba(26,47,47,0.88)",
-                  backdropFilter: "blur(8px)",
-                  padding: "14px 32px",
-                  borderTop: "2px solid #B8860B",
-                  borderBottom: "2px solid #B8860B",
-                  textAlign: "center",
-                  maxWidth: "92%",
-                }}>
-                  <p style={{
-                    fontFamily: '"Cormorant Garamond", Georgia, serif',
-                    fontSize: "clamp(16px, 2vw, 22px)",
-                    fontWeight: 500,
-                    color: "#F8F5EF",
-                    letterSpacing: "1px",
-                    margin: 0,
-                    lineHeight: 1.3,
-                  }}>
-                    The Universal Temple at Fort &nbsp;&middot;&nbsp; The Swami Vivekananda Memorial
-                  </p>
-                  <p style={{
-                    fontSize: "11px",
-                    fontWeight: 700,
-                    letterSpacing: "3px",
-                    textTransform: "uppercase",
-                    color: "#D4A547",
-                    margin: "4px 0 0",
-                  }}>
-                    The Two Centres of the Ashrama, Belagavi
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="reveal" style={{ maxWidth: "1100px", margin: "0 auto", overflow: "hidden", boxShadow: "0 20px 60px rgba(26,47,47,0.15)", border: "1px solid #E8E2D8" }}>
+            <Image
+              src="/images/fort-ashrama.jpg"
+              alt="Ramakrishna Mission Ashrama at Fort, Belagavi"
+              width={1600}
+              height={900}
+              priority
+              sizes="(max-width: 1100px) 100vw, 1100px"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
           </div>
-
-          {/* caption below */}
-          <p className="reveal" style={{
-            textAlign: "center",
-            marginTop: "26px",
-            fontSize: "14px",
-            color: "#7A756D",
-            fontStyle: "italic",
-            maxWidth: "720px",
-            marginLeft: "auto",
-            marginRight: "auto",
-            lineHeight: 1.7,
-          }}>
-            <strong style={{ color: "#5A5650", fontStyle: "normal", fontWeight: 600 }}>Left:</strong> the
-            Universal Temple at the Fort campus &mdash; the main Ashrama centre.{" "}
-            <strong style={{ color: "#5A5650", fontStyle: "normal", fontWeight: 600 }}>Right:</strong> the
-            Swami Vivekananda Memorial sub-centre at Risaldar Galli, where Swamiji stayed in October 1892.
-          </p>
         </div>
       </section>
 
@@ -182,7 +58,7 @@ export default function AshramaPage() {
       <section style={{ padding: "0 0 70px" }}>
         <div className="site-container">
           <div className="reveal" style={{ maxWidth: "850px", margin: "0 auto", overflow: "hidden", boxShadow: "0 12px 50px rgba(26,47,47,0.12)", border: "1px solid #E8E2D8" }}>
-            <Image src="/images/ashrama.jpg" alt="Ramakrishna Mission Ashrama at Fort" width={850} height={480} style={{ width: "100%", height: "auto", display: "block" }} sizes="850px" />
+            <Image src="/images/haripada-mitra-house.jpg" alt="The renovated Haripada Mitra House — now the Ashrama at Fort" width={850} height={480} style={{ width: "100%", height: "auto", display: "block" }} sizes="850px" />
             <div style={{ padding: "14px 20px", background: "#F3EDE4", textAlign: "center" }}>
               <p style={{ fontSize: "13px", color: "#5A5650", fontWeight: 500, fontStyle: "italic" }}>The renovated Haripada Mitra House — now the Ashrama at Fort</p>
             </div>

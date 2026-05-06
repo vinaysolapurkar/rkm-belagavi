@@ -66,10 +66,10 @@ export default function SwamijiInBelagaviPage() {
         </div>
       </section>
 
-      {/* Bhate and Mitra portraits */}
+      {/* Bhate portrait + Bhate House */}
       <section style={{ padding: "0 0 80px" }}>
         <div className="site-container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", maxWidth: "560px", margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: "40px", maxWidth: "880px", margin: "0 auto", alignItems: "start" }}>
             <div className="reveal-left" style={{ textAlign: "center" }}>
               <div style={{ overflow: "hidden", border: "1px solid #E8E2D8", boxShadow: "0 8px 35px rgba(26,47,47,0.1)", marginBottom: "14px" }}>
                 <Image src="/images/sadashiv-bhate.jpg" alt="Mr. Sadashiv Bhate" width={300} height={380} style={{ width: "100%", height: "auto", display: "block" }} />
@@ -79,10 +79,10 @@ export default function SwamijiInBelagaviPage() {
             </div>
             <div className="reveal-right" style={{ textAlign: "center" }}>
               <div style={{ overflow: "hidden", border: "1px solid #E8E2D8", boxShadow: "0 8px 35px rgba(26,47,47,0.1)", marginBottom: "14px" }}>
-                <Image src="/images/haripada-mitra.jpg" alt="Mr. Haripada Mitra" width={300} height={380} style={{ width: "100%", height: "auto", display: "block" }} />
+                <Image src="/images/bhate-house.jpg" alt="The Bhate House — where Swamiji stayed for the first three days" width={520} height={380} style={{ width: "100%", height: "auto", display: "block" }} />
               </div>
-              <p style={{ fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: "17px", fontWeight: 600, color: "#1A2F2F" }}>Mr. Haripada Mitra</p>
-              <p style={{ fontSize: "12px", color: "#7A756D", marginTop: "2px" }}>Sub-divisional Forest Officer</p>
+              <p style={{ fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: "17px", fontWeight: 600, color: "#1A2F2F" }}>The Bhate House</p>
+              <p style={{ fontSize: "12px", color: "#7A756D", marginTop: "2px" }}>Where Swamiji stayed 16&ndash;18 October 1892</p>
             </div>
           </div>
         </div>
@@ -125,6 +125,28 @@ export default function SwamijiInBelagaviPage() {
             <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.82)", lineHeight: 1.9, textAlign: "justify" }}>
               On being pressed again to move with Haripadababu, &ldquo;I shall go if you can make my host agree to the proposal&rdquo;. After much persuasion, Mr Bhate agreed. Haripada Mitra did not allow him to leave and so Swamiji stayed in that house for a period of <strong style={{ color: "#D4C078" }}>9 days</strong>.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Haripada Mitra portrait + Monument */}
+      <section style={{ padding: "70px 0 80px", background: "#F8F5EF" }}>
+        <div className="site-container">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: "40px", maxWidth: "880px", margin: "0 auto", alignItems: "start" }}>
+            <div className="reveal-left" style={{ textAlign: "center" }}>
+              <div style={{ overflow: "hidden", border: "1px solid #E8E2D8", boxShadow: "0 8px 35px rgba(26,47,47,0.1)", marginBottom: "14px" }}>
+                <Image src="/images/haripada-mitra.jpg" alt="Mr. Haripada Mitra" width={300} height={380} style={{ width: "100%", height: "auto", display: "block" }} />
+              </div>
+              <p style={{ fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: "17px", fontWeight: 600, color: "#1A2F2F" }}>Mr. Haripada Mitra</p>
+              <p style={{ fontSize: "12px", color: "#7A756D", marginTop: "2px" }}>Sub-divisional Forest Officer</p>
+            </div>
+            <div className="reveal-right" style={{ textAlign: "center" }}>
+              <div style={{ overflow: "hidden", border: "1px solid #E8E2D8", boxShadow: "0 8px 35px rgba(26,47,47,0.1)", marginBottom: "14px" }}>
+                <Image src="/images/haripada-mitra-monument.jpg" alt="Monument at Haripada Mitra's house" width={520} height={380} style={{ width: "100%", height: "auto", display: "block" }} />
+              </div>
+              <p style={{ fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: "17px", fontWeight: 600, color: "#1A2F2F" }}>Haripada Mitra&rsquo;s House</p>
+              <p style={{ fontSize: "12px", color: "#7A756D", marginTop: "2px" }}>Where Swamiji stayed 19&ndash;27 October 1892</p>
+            </div>
           </div>
         </div>
       </section>
@@ -284,32 +306,15 @@ export default function SwamijiInBelagaviPage() {
           <div className="reveal">
             <SectionHeading title="Swamiji&rsquo;s Photos in Belgaum" />
           </div>
-          <div className="gallery-3col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "24px", maxWidth: "900px", margin: "0 auto" }}>
-            {/* Shrine */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px", maxWidth: "780px", margin: "0 auto" }}>
             <div className="reveal-left" style={{ overflow: "hidden", border: "1px solid #E8E2D8", boxShadow: "0 8px 35px rgba(26,47,47,0.1)" }}>
-              <div style={{ aspectRatio: "4/3", position: "relative", overflow: "hidden" }}>
-                <Image src="/images/Cropped-SVM-_E7A9941-1.jpg" alt="Shrine — Swami Vivekananda" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-              </div>
-              <div style={{ padding: "12px 16px", background: "#fff", textAlign: "center" }}>
-                <p style={{ fontSize: "13px", color: "#1A2F2F", fontWeight: 600 }}>Shrine &mdash; Swami Vivekananda</p>
+              <div style={{ aspectRatio: "3/4", position: "relative", overflow: "hidden", background: "#F3EDE4", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Image src="/images/swamiji-belgaum-1.jpg" alt="Swami Vivekananda — Belgaum" width={400} height={533} style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
               </div>
             </div>
-            {/* Portrait */}
-            <div className="reveal" style={{ overflow: "hidden", border: "1px solid #E8E2D8", boxShadow: "0 8px 35px rgba(26,47,47,0.1)" }}>
-              <div style={{ aspectRatio: "4/3", position: "relative", overflow: "hidden", background: "#1A2F2F", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Image src="/images/swami-vivekananda-portrait.jpg" alt="Swami Vivekananda" width={260} height={340} style={{ height: "100%", width: "auto", display: "block", objectFit: "contain" }} />
-              </div>
-              <div style={{ padding: "12px 16px", background: "#fff", textAlign: "center" }}>
-                <p style={{ fontSize: "13px", color: "#1A2F2F", fontWeight: 600 }}>Swami Vivekananda</p>
-              </div>
-            </div>
-            {/* Coat & Slippers */}
             <div className="reveal-right" style={{ overflow: "hidden", border: "1px solid #E8E2D8", boxShadow: "0 8px 35px rgba(26,47,47,0.1)" }}>
-              <div style={{ aspectRatio: "4/3", position: "relative", overflow: "hidden", background: "#F3EDE4", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Image src="/images/swamiji-belgaum-coat.jpg" alt="Coat & Kolhapuri Slippers from Belgaum" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
-              </div>
-              <div style={{ padding: "12px 16px", background: "#fff", textAlign: "center" }}>
-                <p style={{ fontSize: "13px", color: "#1A2F2F", fontWeight: 600 }}>Swami Vivekananda in Coat &amp; Kolhapuri Slippers</p>
+              <div style={{ aspectRatio: "3/4", position: "relative", overflow: "hidden", background: "#F3EDE4", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Image src="/images/swamiji-belgaum-2.jpg" alt="Swami Vivekananda — Belgaum" width={400} height={533} style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
               </div>
             </div>
           </div>

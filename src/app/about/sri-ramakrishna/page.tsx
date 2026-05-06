@@ -27,7 +27,7 @@ export default function SriRamakrishnaPage() {
             <div className="reveal-left">
               <div style={{ boxShadow: "0 8px 35px rgba(0,0,0,0.15)", overflow: "hidden", width: "250px" }}>
                 <Image
-                  src="/images/Ramakrishna.jpg"
+                  src="/images/sri-ramakrishna-1.jpg"
                   alt="Sri Ramakrishna Paramahamsa"
                   width={250}
                   height={320}
