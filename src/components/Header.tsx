@@ -245,15 +245,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50">
       {/* Top bar */}
-      <div style={{ background: "#F1EAD8", borderBottom: "1px solid #E2D9BF" }}>
-        <div className="site-container" style={{ position: "relative", padding: "18px 15px" }}>
-          {/* Logo (absolute, far left) */}
-          <Link
-            href="/"
-            aria-label="Home"
-            className="hidden md:block"
-            style={{ position: "absolute", left: "15px", top: "50%", transform: "translateY(-50%)" }}
-          >
+      <div className="bg-white border-b border-gray-200">
+        <div className="site-container flex items-center justify-between py-3">
+          <Link href="/" className="flex items-center gap-3">
             <Image
               src="/images/cropped-ashrama_logo-1-180x180.png"
               alt="Ramakrishna Mission Ashrama, Belagavi"
@@ -261,45 +255,37 @@ export default function Header() {
               height={180}
               className="h-[64px] w-[64px] object-contain"
             />
+            <div className="leading-tight">
+              <p
+                style={{
+                  fontFamily: '"Cormorant Garamond", Georgia, serif',
+                  fontSize: "26px",
+                  fontWeight: 500,
+                  color: "#1A2F2F",
+                  letterSpacing: "0.5px",
+                  lineHeight: 1.1,
+                }}
+              >
+                Ramakrishna Mission Ashrama
+              </p>
+              <p
+                style={{
+                  fontFamily: '"Cormorant Garamond", Georgia, serif',
+                  fontSize: "20px",
+                  fontWeight: 400,
+                  color: "#B8860B",
+                  letterSpacing: "1px",
+                  fontStyle: "italic",
+                  marginTop: "2px",
+                }}
+              >
+                Belagavi
+              </p>
+            </div>
           </Link>
-
-          {/* Centered title block */}
-          <Link href="/" className="block text-center" style={{ textDecoration: "none" }}>
-            <h1
-              style={{
-                fontFamily: '"Cormorant Garamond", Georgia, serif',
-                fontSize: "clamp(20px, 3.4vw, 38px)",
-                fontWeight: 700,
-                color: "#B8860B",
-                letterSpacing: "1.5px",
-                textTransform: "uppercase",
-                lineHeight: 1.15,
-                margin: 0,
-              }}
-            >
-              Sri Ramakrishna Mission Ashrama, Belagavi
-            </h1>
-            <p
-              style={{
-                fontFamily: '"Cormorant Garamond", Georgia, serif',
-                fontSize: "clamp(12px, 1.4vw, 16px)",
-                fontStyle: "italic",
-                color: "#8C6914",
-                marginTop: "4px",
-                lineHeight: 1.3,
-              }}
-            >
-              (A Branch of Ramakrishna Math and Mission, Belur Math, Howrah, West Bengal)
-            </p>
-          </Link>
-
-          {/* Controls (absolute, far right) */}
-          <div
-            className="hidden md:flex items-center gap-3"
-            style={{ position: "absolute", right: "15px", top: "50%", transform: "translateY(-50%)" }}
-          >
+          <div className="hidden md:flex items-center gap-4">
             {/* Font size adjuster */}
-            <div className="flex items-center gap-1 border border-[#C9BC97] rounded-full px-2 py-1 bg-white/40">
+            <div className="flex items-center gap-1 border border-[#ccc] rounded-full px-2 py-1">
               {fontSizes.map((f, i) => (
                 <button
                   key={f.label}
