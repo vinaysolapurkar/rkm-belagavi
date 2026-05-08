@@ -296,13 +296,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════ COUNTERS — ASHRAMA STATS ═══════════ */}
-      <section style={{ padding: "clamp(40px, 5vw, 60px) 0", background: "#1A2F2F" }}>
-        <div className="site-container grid-counter" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "20px" }}>
-          <Counter end={12} label="Days Swamiji Stayed" />
-          <Counter end={200} suffix="+" label="Centres Worldwide" />
-          <Counter end={500} suffix="+" label="Blankets Distributed" />
-          <Counter end={25} suffix="+" label="Years of Service" />
+      {/* ═══════════ SWAMIJI'S STAY IN BELAGAVI ═══════════ */}
+      <section style={{ padding: "clamp(50px, 6vw, 70px) 0", background: "#1A2F2F" }}>
+        <div className="site-container">
+          <p className="reveal" style={{ textAlign: "center", fontSize: "12px", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>
+            October 1892
+          </p>
+          <h2 className="reveal" style={{ textAlign: "center", fontFamily: serif, fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 500, color: "#fff", marginBottom: "8px", lineHeight: 1.25 }}>
+            Swamiji&rsquo;s Stay in Belagavi
+          </h2>
+          <div className="reveal" style={{ width: "40px", height: "2px", background: "#B8860B", margin: "0 auto 40px" }} />
+          <div className="grid-counter" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
+            <Counter end={12} label="Days in Belagavi" />
+            <Counter end={3} label="Days with Sri Sadashiv Bhate" />
+            <Counter end={9} label="Days with Sri Haripada Mitra" />
+          </div>
         </div>
       </section>
 
