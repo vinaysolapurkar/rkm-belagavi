@@ -57,8 +57,7 @@ export default function ContactPage() {
                   <div>
                     <h3 style={{ fontWeight: 700, color: "#2D2A26", marginBottom: "4px", fontSize: "16px" }}>Phone</h3>
                     <p style={{ color: "#5A5650", fontSize: "15px", lineHeight: 1.6 }}>
-                      <a href="tel:+918312432789" style={{ color: "#5A5650", textDecoration: "none" }}>0831-243 2789</a> /{" "}
-                      <a href="tel:+918312430789" style={{ color: "#5A5650", textDecoration: "none" }}>243 0789</a><br />
+                      <a href="tel:+918312432789" style={{ color: "#5A5650", textDecoration: "none" }}>0831-243 2789</a><br />
                       <a href="tel:+918312970320" style={{ color: "#5A5650", textDecoration: "none" }}>0831-297 0320</a> /{" "}
                       <a href="tel:+918312970321" style={{ color: "#5A5650", textDecoration: "none" }}>297 0321</a>
                     </p>

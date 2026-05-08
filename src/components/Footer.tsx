@@ -84,7 +84,7 @@ export default function Footer() {
                 Karnataka
               </p>
               <p style={{ marginBottom: "8px" }}>
-                <strong style={{ color: "#fff" }}>Phone:</strong> 0831-243 2789 / 243 0789 / 297 0320 / 297 0321
+                <strong style={{ color: "#fff" }}>Phone:</strong> 0831-243 2789 / 297 0320 / 297 0321
               </p>
               <p>
                 <strong style={{ color: "#fff" }}>Email:</strong>{" "}
