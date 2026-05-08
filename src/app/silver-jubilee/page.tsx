@@ -262,7 +262,9 @@ export default function SilverJubileePage() {
                 <strong>Phone:</strong>{" "}
                 <a href="tel:08312432789" style={{ color: "#2C2C2C", textDecoration: "none" }}>0831-243 2789</a>
                 {" / "}
-                <a href="tel:08312430789" style={{ color: "#2C2C2C", textDecoration: "none" }}>243 0789</a>
+                <a href="tel:08312970320" style={{ color: "#2C2C2C", textDecoration: "none" }}>297 0320</a>
+                {" / "}
+                <a href="tel:08312970321" style={{ color: "#2C2C2C", textDecoration: "none" }}>297 0321</a>
               </p>
               <p style={{ fontSize: "15px", color: "#5A5650", lineHeight: 1.7 }}>
                 <strong>Email:</strong>{" "}
