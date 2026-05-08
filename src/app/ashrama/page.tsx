@@ -18,31 +18,86 @@ export default function AshramaPage() {
       />
 
       {/* Hero — Fort Ashrama */}
-      <section style={{ position: "relative", padding: "50px 0 30px", background: "linear-gradient(180deg, #F3EDE4 0%, #F8F5EF 100%)" }}>
+      <section style={{ position: "relative", padding: "60px 0 40px", background: "linear-gradient(180deg, #F3EDE4 0%, #F8F5EF 100%)" }}>
+        {/* decorative top ornament */}
+        <div className="reveal" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", marginBottom: "36px" }}>
+          <div style={{ width: "60px", height: "1px", background: "linear-gradient(90deg, transparent, #B8860B)" }} />
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#B8860B" aria-hidden>
+            <path d="M12 2 L13.5 8.5 L20 10 L13.5 11.5 L12 18 L10.5 11.5 L4 10 L10.5 8.5 Z" />
+          </svg>
+          <p style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "#B8860B", margin: 0 }}>
+            Established 2000 &middot; Survey No. 357, Fort
+          </p>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#B8860B" aria-hidden>
+            <path d="M12 2 L13.5 8.5 L20 10 L13.5 11.5 L12 18 L10.5 11.5 L4 10 L10.5 8.5 Z" />
+          </svg>
+          <div style={{ width: "60px", height: "1px", background: "linear-gradient(90deg, #B8860B, transparent)" }} />
+        </div>
+
         <div className="site-container">
-          <div className="reveal" style={{ maxWidth: "1100px", margin: "0 auto", overflow: "hidden", boxShadow: "0 20px 60px rgba(26,47,47,0.15)", border: "1px solid #E8E2D8" }}>
-            <Image
-              src="/images/fort-ashrama.jpg"
-              alt="Ramakrishna Mission Ashrama at Fort, Belagavi"
-              width={1600}
-              height={900}
-              priority
-              sizes="(max-width: 1100px) 100vw, 1100px"
-              style={{ width: "100%", height: "auto", display: "block" }}
-            />
+          <div className="reveal" style={{
+            position: "relative",
+            maxWidth: "1100px",
+            margin: "0 auto",
+            padding: "12px",
+            background: "linear-gradient(135deg, #B8860B 0%, #D4A547 50%, #B8860B 100%)",
+            boxShadow: "0 30px 80px rgba(26,47,47,0.2), 0 8px 25px rgba(184,134,11,0.18)",
+          }}>
+            <div style={{ background: "#F8F5EF", padding: "8px", position: "relative" }}>
+              <div style={{ position: "relative", overflow: "hidden", background: "#1A2F2F" }}>
+                <Image
+                  src="/images/fort-ashrama.jpg"
+                  alt="Ramakrishna Mission Ashrama at Fort, Belagavi"
+                  width={1600}
+                  height={900}
+                  priority
+                  sizes="(max-width: 1100px) 100vw, 1100px"
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
+                {/* corner ornaments */}
+                {[
+                  { top: 10, left: 10, rotate: 0 },
+                  { top: 10, right: 10, rotate: 90 },
+                  { bottom: 10, right: 10, rotate: 180 },
+                  { bottom: 10, left: 10, rotate: 270 },
+                ].map((c, i) => (
+                  <svg key={i} width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden style={{ position: "absolute", top: c.top, bottom: c.bottom, left: c.left, right: c.right, transform: `rotate(${c.rotate}deg)`, filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.4))" }}>
+                    <path d="M2 2 L18 2 M2 2 L2 18" stroke="#D4A547" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="2" cy="2" r="3" fill="#B8860B" />
+                  </svg>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* About the Fort Ashrama */}
-      <section style={{ padding: "60px 0 70px" }}>
-        <div className="site-container">
+      <section style={{ padding: "70px 0 80px", background: "#F8F5EF", position: "relative" }}>
+        {/* faint watermark */}
+        <div aria-hidden style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "radial-gradient(circle at 10% 0%, rgba(184,134,11,0.05), transparent 40%), radial-gradient(circle at 90% 100%, rgba(26,47,47,0.04), transparent 40%)",
+          pointerEvents: "none",
+        }} />
+        <div className="site-container" style={{ position: "relative" }}>
           <div className="reveal">
             <SectionHeading id="about" title="About the Fort Ashrama" />
           </div>
           <div className="reveal" style={{ maxWidth: "780px", margin: "0 auto" }}>
-            <p style={{ fontSize: "16px", color: "#4A4743", lineHeight: 1.9, textAlign: "justify", marginBottom: "18px" }}>
-              Sometime in 1998, Revered Swami Smarananandaji Maharaj, the then General Secretary, Ramakrishna Math and Ramakrishna Mission initiated a research into Swami Vivekananda&apos;s stay in Belagavi. It was well known that Swamiji had stayed in Sri Haripada Mitra&apos;s house in Belagavi and that Haripada Mitra was a sub-divisional forest officer in 1892 and also that Swamiji had written letters to Haripada Mitra to his Belagavi address from America. But it was not known which particular house in Belagavi it was or even where in Belagavi that house was located!
+            <p style={{ fontSize: "16px", color: "#4A4743", lineHeight: 1.9, textAlign: "justify", marginBottom: "22px" }}>
+              <span style={{
+                fontFamily: '"Cormorant Garamond", Georgia, serif',
+                float: "left",
+                fontSize: "62px",
+                lineHeight: 0.85,
+                fontWeight: 600,
+                color: "#B8860B",
+                paddingRight: "12px",
+                paddingTop: "6px",
+                marginRight: "2px",
+              }}>S</span>ometime in 1998, Revered Swami Smarananandaji Maharaj, the then General Secretary, Ramakrishna Math and Ramakrishna Mission initiated a research into Swami Vivekananda&apos;s stay in Belagavi. It was well known that Swamiji had stayed in Sri Haripada Mitra&apos;s house in Belagavi and that Haripada Mitra was a sub-divisional forest officer in 1892 and also that Swamiji had written letters to Haripada Mitra to his Belagavi address from America. But it was not known which particular house in Belagavi it was or even where in Belagavi that house was located!
             </p>
             <p style={{ fontSize: "16px", color: "#4A4743", lineHeight: 1.9, textAlign: "justify", marginBottom: "18px" }}>
               After a lot of study it was ascertained categorically that Survey No.357, Fort, Belagavi &ndash; 590016, was the blessed house of Sri Haripada Mitra where Swamiji had stayed for 9 days in October 1892. Once this was confirmed, an appeal was made by well-wishers to the Karnataka State Government. In response the State Government handed over this building along with 0.8 acres of surrounding land to Ramakrishna Math and Ramakrishna Mission on June 1, 2000.
@@ -219,91 +274,102 @@ export default function AshramaPage() {
         </div>
       </section>
 
-      {/* Monument, Book Store, Exhibition, Sabhangana — as feature cards */}
-      <section style={{ padding: "80px 0" }}>
+      {/* Monument, Book Store, Exhibition, Sabhangana — elegant numbered cards */}
+      <section style={{ padding: "90px 0", background: "linear-gradient(180deg, #F8F5EF 0%, #F3EDE4 100%)" }}>
         <div className="site-container">
           <div className="reveal">
             <SectionHeading title="Within the Ashrama" subtitle="Key buildings and facilities that make up the Ashrama campus" />
           </div>
 
-          {/* Monument */}
-          <div className="reveal" style={{ maxWidth: "780px", margin: "0 auto 50px" }}>
-            <div style={{ borderLeft: "3px solid #B8860B", paddingLeft: "28px" }}>
-              <h3 style={{
-                fontFamily: '"Cormorant Garamond", Georgia, serif',
-                fontSize: "26px",
-                fontWeight: 600,
-                color: "#1A2F2F",
-                marginBottom: "14px",
-              }}>Swami Vivekananda Monument</h3>
-              <p style={{ fontSize: "16px", color: "#4A4743", lineHeight: 1.9, textAlign: "justify", marginBottom: "14px" }}>
-                The house in the Fort area of Belagavi where Swami Vivekananda stayed as a guest of Sri Haripada Mitra was identified and handed over by the State Government of Karnataka in June 2000 to start a centre of the Ramakrishna Mission in the city.
-              </p>
-              <p style={{ fontSize: "16px", color: "#4A4743", lineHeight: 1.9, textAlign: "justify", marginBottom: "14px" }}>
-                Once the renovation was completed it was rechristened as the Swami Vivekananda Monument. This renovated building was inaugurated by the then Chief Minister, Sri S.M. Krishna on 23rd May 2001.
-              </p>
-              <p style={{ fontSize: "16px", color: "#4A4743", lineHeight: 1.9, textAlign: "justify", marginBottom: "14px" }}>
-                In January 2006, a beautiful statue of Swami Vivekananda was installed in the meditation hall by Revered Swami Suhitanandaji Maharaj, Assistant Secretary of the Ramakrishna Math &amp; Ramakrishna Mission, Belur Math. The life-like statue acts as a visible reminder to Swamiji&apos;s stay in this house.
-              </p>
-              <p style={{ fontSize: "16px", color: "#4A4743", lineHeight: 1.9, textAlign: "justify" }}>
-                Visit this house and spend a few moments in quiet contemplation in the meditation hall while you are at the Ashrama.
-              </p>
-            </div>
-          </div>
+          <div style={{ maxWidth: "880px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "32px" }}>
+            {[
+              {
+                num: "I",
+                title: "Swami Vivekananda Monument",
+                paragraphs: [
+                  "The house in the Fort area of Belagavi where Swami Vivekananda stayed as a guest of Sri Haripada Mitra was identified and handed over by the State Government of Karnataka in June 2000 to start a centre of the Ramakrishna Mission in the city.",
+                  "Once the renovation was completed it was rechristened as the Swami Vivekananda Monument. This renovated building was inaugurated by the then Chief Minister, Sri S.M. Krishna on 23rd May 2001.",
+                  "In January 2006, a beautiful statue of Swami Vivekananda was installed in the meditation hall by Revered Swami Suhitanandaji Maharaj, Assistant Secretary of the Ramakrishna Math & Ramakrishna Mission, Belur Math. The life-like statue acts as a visible reminder to Swamiji’s stay in this house.",
+                  "Visit this house and spend a few moments in quiet contemplation in the meditation hall while you are at the Ashrama.",
+                ],
+              },
+              {
+                num: "II",
+                title: "Book Store",
+                paragraphs: [
+                  "The power and influence of books needs no mention. The Ramakrishna Order is more than a century old and has produced some of the finest and outstanding spiritual stalwarts and gigantic intellects resulting in a huge repository of Ramakrishna-Vivekananda-Vedanta literature. These books and other articles are available at the Book Store in the Ashrama.",
+                ],
+              },
+              {
+                num: "III",
+                title: "Arise! Awake! — An Exhibition",
+                paragraphs: [
+                  "This is an exhibition on the ground floor next to the Bookstall. It comprises 40 colourful panels depicting the life and message of Swami Vivekananda for the visitor who wishes to know about Swamiji in brief.",
+                ],
+              },
+              {
+                num: "IV",
+                title: "Sabhangana",
+                paragraphs: [
+                  "A large Sabhangana capable of seating over 1000 people was inaugurated in February 2011. Numerous events and annual celebrations have been conducted here since then. The hall with dimensions of 120 ft by 90 ft can comfortably seat more than 1000 members of the audience. The stage measuring about 25ft by 45ft is part of a multi-storied building connected to the hall.",
+                ],
+              },
+            ].map((feat) => (
+              <article key={feat.title} className="reveal" style={{
+                position: "relative",
+                background: "#fff",
+                border: "1px solid #E8E2D8",
+                borderTop: "3px solid #B8860B",
+                padding: "36px 40px 32px",
+                boxShadow: "0 6px 25px rgba(26,47,47,0.06)",
+              }}>
+                {/* corner ornaments */}
+                <svg width="22" height="22" viewBox="0 0 40 40" fill="none" aria-hidden style={{ position: "absolute", top: "10px", left: "10px" }}>
+                  <path d="M2 2 L16 2 M2 2 L2 16" stroke="#B8860B" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+                </svg>
+                <svg width="22" height="22" viewBox="0 0 40 40" fill="none" aria-hidden style={{ position: "absolute", top: "10px", right: "10px", transform: "rotate(90deg)" }}>
+                  <path d="M2 2 L16 2 M2 2 L2 16" stroke="#B8860B" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+                </svg>
 
-          {/* Book Store */}
-          <div className="reveal" style={{ maxWidth: "780px", margin: "0 auto 50px" }}>
-            <div style={{ borderLeft: "3px solid #B8860B", paddingLeft: "28px" }}>
-              <h3 style={{
-                fontFamily: '"Cormorant Garamond", Georgia, serif',
-                fontSize: "26px",
-                fontWeight: 600,
-                color: "#1A2F2F",
-                marginBottom: "14px",
-              }}>Book Store</h3>
-              <p style={{ fontSize: "16px", color: "#4A4743", lineHeight: 1.9, textAlign: "justify" }}>
-                The power and influence of books needs no mention. The Ramakrishna Order is more than a century old and has produced some of the finest and outstanding spiritual stalwarts and gigantic intellects resulting in a huge repository of Ramakrishna-Vivekananda-Vedanta literature. These books and other articles are available at the Book Store in the Ashrama.
-              </p>
-            </div>
-          </div>
-
-          {/* Exhibition Hall */}
-          <div className="reveal" style={{ maxWidth: "780px", margin: "0 auto 50px" }}>
-            <div style={{ borderLeft: "3px solid #B8860B", paddingLeft: "28px" }}>
-              <h3 style={{
-                fontFamily: '"Cormorant Garamond", Georgia, serif',
-                fontSize: "26px",
-                fontWeight: 600,
-                color: "#1A2F2F",
-                marginBottom: "14px",
-              }}>Arise! Awake! &mdash; An Exhibition</h3>
-              <p style={{ fontSize: "16px", color: "#4A4743", lineHeight: 1.9, textAlign: "justify" }}>
-                This is an exhibition on the ground floor next to the Bookstall. It comprises 40 colourful panels depicting the life and message of Swami Vivekananda for the visitor who wishes to know about Swamiji in brief.
-              </p>
-            </div>
-          </div>
-
-          {/* Sabhangana */}
-          <div className="reveal" style={{ maxWidth: "780px", margin: "0 auto" }}>
-            <div style={{ borderLeft: "3px solid #B8860B", paddingLeft: "28px" }}>
-              <h3 style={{
-                fontFamily: '"Cormorant Garamond", Georgia, serif',
-                fontSize: "26px",
-                fontWeight: 600,
-                color: "#1A2F2F",
-                marginBottom: "14px",
-              }}>Sabhangana</h3>
-              <p style={{ fontSize: "16px", color: "#4A4743", lineHeight: 1.9, textAlign: "justify" }}>
-                A large Sabhangana capable of seating over 1000 people was inaugurated in February 2011. Numerous events and annual celebrations have been conducted here since then. The hall with dimensions of 120 ft by 90 ft can comfortably seat more than 1000 members of the audience. The stage measuring about 25ft by 45ft is part of a multi-storied building connected to the hall.
-              </p>
-            </div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "20px", marginBottom: "18px", paddingBottom: "14px", borderBottom: "1px dashed rgba(184,134,11,0.3)" }}>
+                  <span style={{
+                    fontFamily: '"Cormorant Garamond", Georgia, serif',
+                    fontSize: "32px",
+                    fontWeight: 600,
+                    fontStyle: "italic",
+                    color: "#B8860B",
+                    flexShrink: 0,
+                    minWidth: "44px",
+                  }}>
+                    {feat.num}.
+                  </span>
+                  <h3 style={{
+                    fontFamily: '"Cormorant Garamond", Georgia, serif',
+                    fontSize: "26px",
+                    fontWeight: 600,
+                    color: "#1A2F2F",
+                    lineHeight: 1.25,
+                    margin: 0,
+                  }}>
+                    {feat.title}
+                  </h3>
+                </div>
+                <div>
+                  {feat.paragraphs.map((p, idx) => (
+                    <p key={idx} style={{ fontSize: "16px", color: "#4A4743", lineHeight: 1.9, textAlign: "justify", marginBottom: idx < feat.paragraphs.length - 1 ? "14px" : 0 }}>
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Closing image band */}
       <section style={{ position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "relative", width: "100%", maxHeight: "320px", overflow: "hidden" }}>
+        <div style={{ position: "relative", width: "100%", maxHeight: "360px", overflow: "hidden" }}>
           <Image
             src="/images/dscn7408.jpg"
             alt="Ashrama campus"
@@ -315,24 +381,42 @@ export default function AshramaPage() {
           <div style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(to right, rgba(26,47,47,0.85), rgba(26,47,47,0.5))",
+            background: "linear-gradient(135deg, rgba(26,47,47,0.92) 0%, rgba(26,47,47,0.6) 60%, rgba(26,47,47,0.85) 100%)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}>
-            <p style={{
-              fontFamily: '"Cormorant Garamond", Georgia, serif',
-              fontSize: "clamp(20px, 3vw, 30px)",
-              fontWeight: 500,
-              fontStyle: "italic",
-              color: "#fff",
-              textAlign: "center",
-              maxWidth: "700px",
-              padding: "0 20px",
-              lineHeight: 1.5,
-            }}>
-              &ldquo;The goal of human life is the realization of the Ultimate Reality which alone can give man supreme fulfilment and everlasting peace.&rdquo;
-            </p>
+            <div style={{ textAlign: "center", maxWidth: "780px", padding: "0 24px" }}>
+              {/* ornament */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "14px", marginBottom: "20px" }}>
+                <div style={{ width: "50px", height: "1px", background: "linear-gradient(90deg, transparent, rgba(212,165,71,0.7))" }} />
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4A547" aria-hidden>
+                  <path d="M12 2 L13.5 8.5 L20 10 L13.5 11.5 L12 18 L10.5 11.5 L4 10 L10.5 8.5 Z" />
+                </svg>
+                <div style={{ width: "50px", height: "1px", background: "linear-gradient(90deg, rgba(212,165,71,0.7), transparent)" }} />
+              </div>
+              <p style={{
+                fontFamily: '"Cormorant Garamond", Georgia, serif',
+                fontSize: "clamp(20px, 3vw, 30px)",
+                fontWeight: 500,
+                fontStyle: "italic",
+                color: "#fff",
+                lineHeight: 1.55,
+                marginBottom: "16px",
+              }}>
+                &ldquo;The goal of human life is the realization of the Ultimate Reality which alone can give man supreme fulfilment and everlasting peace.&rdquo;
+              </p>
+              <p style={{
+                fontSize: "11px",
+                fontWeight: 700,
+                letterSpacing: "3px",
+                textTransform: "uppercase",
+                color: "#D4A547",
+                margin: 0,
+              }}>
+                Sri Ramakrishna Paramahamsa
+              </p>
+            </div>
           </div>
         </div>
       </section>
