@@ -390,7 +390,7 @@ export default function ActivitiesPage() {
                   fontSize: "26px", fontWeight: 700, color: "#1A2F2F",
                   marginBottom: "6px",
                 }}>
-                  Next Japa Yajna &mdash; June 10 to 14, 2026
+                  Next Japa Yajna &mdash; September 30 to October 4, 2026
                 </p>
                 <p style={{ fontSize: "15px", color: "#6B4E1B", fontWeight: 500 }}>
                   Registrations open

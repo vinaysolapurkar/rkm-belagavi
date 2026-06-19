@@ -29,3 +29,4 @@ next-env.d.ts
 
 # raw source photos — copies live in public/images
 /swamiji-sent-photos/
+/silver-jubliee-pics/

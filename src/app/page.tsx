@@ -164,7 +164,7 @@ const heroSlides = [
 ];
 
 const upcomingEvents = [
-  { date: "May 8-10, 2026", title: "Silver Jubilee Concluding Celebrations", image: "/images/anual_celebration.jpg", desc: "Grand concluding celebrations marking 25 years of the Ashrama's service to the community.", href: "/silver-jubilee" },
+  { date: "July 29, 2026", title: "Guru Purnima", image: "/images/Ramakrishna.jpg", desc: "Sacred day honouring the Guru and the lineage of spiritual teachers, observed at the Ashrama with special worship, devotional music, and discourses.", href: "/events" },
 ];
 
 const recentEvents = [
@@ -250,16 +250,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════ SILVER JUBILEE BANNER ═══════════ */}
+      {/* ═══════════ GURU PURNIMA BANNER ═══════════ */}
       <section className="reveal" style={{ background: "#1A2F2F" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px 24px", display: "flex", alignItems: "center", gap: "24px", flexWrap: "wrap", justifyContent: "center" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <div style={{ fontFamily: serif, fontSize: "28px", fontWeight: 600, color: "#B8860B", lineHeight: 1 }}>May 8&ndash;10, 2026</div>
+            <div style={{ fontFamily: serif, fontSize: "28px", fontWeight: 600, color: "#B8860B", lineHeight: 1 }}>July 29, 2026</div>
             <div style={{ width: "1px", height: "24px", background: "rgba(255,255,255,0.15)" }} />
-            <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.7)" }}>Silver Jubilee Concluding Celebrations</span>
+            <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.7)" }}>Guru Purnima</span>
           </div>
-          <Link href="/silver-jubilee" style={{ marginLeft: "auto", color: "#B8860B", fontSize: "12px", fontWeight: 600, textTransform: "uppercase", textDecoration: "none", letterSpacing: "1.5px", borderBottom: "1px solid rgba(184,134,11,0.4)", paddingBottom: "2px", transition: "all 0.3s" }}>
-            Register &rsaquo;
+          <Link href="/events" style={{ marginLeft: "auto", color: "#B8860B", fontSize: "12px", fontWeight: 600, textTransform: "uppercase", textDecoration: "none", letterSpacing: "1.5px", borderBottom: "1px solid rgba(184,134,11,0.4)", paddingBottom: "2px", transition: "all 0.3s" }}>
+            Learn More &rsaquo;
           </Link>
         </div>
       </section>
@@ -268,7 +268,7 @@ export default function Home() {
       <section className="reveal" style={{ background: "linear-gradient(135deg, #FBF7ED 0%, #F8F0DD 100%)", borderTop: "1px solid #E8E2D8", borderBottom: "1px solid #E8E2D8" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "18px 24px", display: "flex", alignItems: "center", gap: "24px", flexWrap: "wrap", justifyContent: "center" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <div style={{ fontFamily: serif, fontSize: "26px", fontWeight: 600, color: "#1A2F2F", lineHeight: 1 }}>June 10&ndash;14, 2026</div>
+            <div style={{ fontFamily: serif, fontSize: "26px", fontWeight: 600, color: "#1A2F2F", lineHeight: 1 }}>Sep 30 &ndash; Oct 4, 2026</div>
             <div style={{ width: "1px", height: "24px", background: "rgba(26,47,47,0.15)" }} />
             <span style={{ fontSize: "14px", color: "#4A4743" }}>Japa Yajna &mdash; Registrations Open</span>
           </div>
@@ -363,7 +363,7 @@ export default function Home() {
                 <div style={{ color: "#B8860B", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "3px", marginBottom: "16px" }}>Upcoming</div>
                 <h3 style={{ fontFamily: serif, fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 500, color: "#1A1A1A", marginBottom: "20px", lineHeight: 1.2 }}>{ev.title}</h3>
                 <p style={{ fontSize: "16px", color: "#5A5650", lineHeight: 1.8, marginBottom: "28px" }}>{ev.desc}</p>
-                <span className="btn-orange" style={{ display: "inline-block", alignSelf: "flex-start" }}>View Details & Register</span>
+                <span className="btn-orange" style={{ display: "inline-block", alignSelf: "flex-start" }}>View Details</span>
               </div>
             </Link>
           ))}

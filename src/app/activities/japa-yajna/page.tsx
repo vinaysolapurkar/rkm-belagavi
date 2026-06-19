@@ -167,7 +167,7 @@ export default function JapaYajnaPage() {
                 lineHeight: 1.35,
                 marginBottom: "12px",
               }}>
-                Next Japa Yajna &mdash; June 10 to 14, 2026
+                Next Japa Yajna &mdash; September 30 to October 4, 2026
               </h3>
               <p style={{
                 fontSize: "15px",

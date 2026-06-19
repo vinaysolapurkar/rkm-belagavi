@@ -9,7 +9,16 @@ export const metadata = {
   title: "Events – RAMAKRISHNA MISSION ASHRAMA, BELAGAVI",
 };
 
-const pastEvents: { title: string; date: string; description: string; image: string | null; imageAlt: string | null }[] = [
+const pastEvents: { title: string; date: string; description: string; image: string | null; imageAlt: string | null; href?: string }[] = [
+  {
+    title: "Silver Jubilee Concluding Celebrations",
+    date: "May 8–10, 2026",
+    description:
+      "The Ashrama celebrated 25 glorious years of spiritual service with a momentous three-day concluding ceremony. The celebrations featured Sri Ramakrishna Homa, Bhagavannama Sankeertana, spiritual talks by revered monks of the Ramakrishna Order, the inauguration of an exhibition, cultural presentations, and evening music programmes by eminent artists.",
+    image: "/images/silver-jubilee/day-2-arati.jpg",
+    imageAlt: "Silver Jubilee Concluding Celebrations",
+    href: "/silver-jubilee",
+  },
   {
     title: "Annual Celebrations — February 2021",
     date: "February 26–28, 2021",
@@ -102,61 +111,6 @@ export default function EventsPage() {
           </div>
 
           <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "32px" }}>
-            {/* Silver Jubilee */}
-            <div
-              className="reveal activity-card"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "30px",
-                alignItems: "start",
-                background: "#fff",
-                border: "1px solid #E8E2D8",
-                borderTop: "3px solid #B8860B",
-              }}
-            >
-              <div style={{ position: "relative", overflow: "hidden" }}>
-                <Image
-                  src="/images/anual_celebration.jpg"
-                  alt="Silver Jubilee Concluding Celebrations"
-                  width={450}
-                  height={300}
-                  style={{ width: "100%", height: "auto", display: "block" }}
-                  sizes="450px"
-                />
-              </div>
-              <div style={{ padding: "28px 24px 28px 0" }}>
-                <p style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "#B8860B", marginBottom: "8px" }}>
-                  May 8&ndash;10, 2026
-                </p>
-                <h3 style={{
-                  fontFamily: '"Cormorant Garamond", Georgia, serif',
-                  fontSize: "24px", fontWeight: 600, color: "#1A2F2F",
-                  marginBottom: "14px", lineHeight: 1.3,
-                }}>
-                  Silver Jubilee Concluding Celebrations
-                </h3>
-                <p style={{ fontSize: "15px", color: "#4A4743", lineHeight: 1.8, marginBottom: "20px" }}>
-                  Grand concluding celebrations marking 25 years of the Ashrama&rsquo;s
-                  service to the community. Three days of spiritual programmes, cultural
-                  events, and community gatherings at the Ashrama premises at Fort, Belagavi.
-                </p>
-                <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
-                  <Link href="/silver-jubilee" style={{ fontSize: "13px", fontWeight: 700, color: "#B8860B", textTransform: "uppercase", letterSpacing: "1.5px", textDecoration: "none", borderBottom: "1px solid rgba(184,134,11,0.4)", paddingBottom: "2px" }}>
-                    View Details &amp; Register &rsaquo;
-                  </Link>
-                  <AddToCalendar
-                    title="Silver Jubilee Concluding Celebrations — Ramakrishna Mission Ashrama, Belagavi"
-                    description="Grand concluding celebrations marking 25 years of the Ashrama's service to the community. Three days of spiritual programmes, cultural events, and community gatherings."
-                    location="Ramakrishna Mission Ashrama, Fort, Belagavi 590016, Karnataka, India"
-                    startDate="2026-05-08"
-                    endDate="2026-05-11"
-                    allDay
-                  />
-                </div>
-              </div>
-            </div>
-
             {/* Japa Yajna */}
             <div
               className="reveal activity-card"
@@ -182,7 +136,7 @@ export default function EventsPage() {
               </div>
               <div style={{ padding: "28px 24px 28px 0" }}>
                 <p style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "#B8860B", marginBottom: "8px" }}>
-                  June 10&ndash;14, 2026
+                  September 30 &ndash; October 4, 2026
                 </p>
                 <h3 style={{
                   fontFamily: '"Cormorant Garamond", Georgia, serif',
@@ -205,8 +159,8 @@ export default function EventsPage() {
                     title="Japa Yajna — Ramakrishna Mission Ashrama, Belagavi"
                     description="A five-day spiritual camp for devotees who have taken initiation (Mantra Deeksha). Participants complete one hundred thousand japas in the serene surroundings of the Ashrama. Food and stay arranged without any charge."
                     location="Ramakrishna Mission Ashrama, Fort, Belagavi 590016, Karnataka, India"
-                    startDate="2026-06-10"
-                    endDate="2026-06-15"
+                    startDate="2026-09-30"
+                    endDate="2026-10-05"
                     allDay
                   />
                 </div>
@@ -340,6 +294,11 @@ export default function EventsPage() {
                       <p style={{ fontSize: "15px", color: "#5A5650", lineHeight: 1.8, textAlign: "justify" }}>
                         {event.description}
                       </p>
+                      {event.href && (
+                        <Link href={event.href} style={{ display: "inline-block", marginTop: "16px", fontSize: "13px", fontWeight: 700, color: "#B8860B", textTransform: "uppercase", letterSpacing: "1.5px", textDecoration: "none", borderBottom: "1px solid rgba(184,134,11,0.4)", paddingBottom: "2px" }}>
+                          View Photo Gallery &rsaquo;
+                        </Link>
+                      )}
                     </div>
                     <div style={{ position: "relative", overflow: "hidden", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
                       <Image
@@ -361,6 +320,11 @@ export default function EventsPage() {
                     <p style={{ fontSize: "15px", color: "#5A5650", lineHeight: 1.8, textAlign: "justify" }}>
                       {event.description}
                     </p>
+                    {event.href && (
+                      <Link href={event.href} style={{ display: "inline-block", marginTop: "16px", fontSize: "13px", fontWeight: 700, color: "#B8860B", textTransform: "uppercase", letterSpacing: "1.5px", textDecoration: "none", borderBottom: "1px solid rgba(184,134,11,0.4)", paddingBottom: "2px" }}>
+                        View Photo Gallery &rsaquo;
+                      </Link>
+                    )}
                   </div>
                 )}
               </div>
