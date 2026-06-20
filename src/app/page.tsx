@@ -164,7 +164,7 @@ const heroSlides = [
 ];
 
 const upcomingEvents = [
-  { date: "July 29, 2026", title: "Guru Purnima", image: "/images/Ramakrishna.jpg", desc: "Sacred day honouring the Guru and the lineage of spiritual teachers, observed at the Ashrama with special worship, devotional music, and discourses.", href: "/events" },
+  { date: "July 29, 2026", title: "Guru Purnima", image: "/images/Ramakrishna.jpg", imagePosition: "center top", desc: "Sacred day honouring the Guru and the lineage of spiritual teachers, observed at the Ashrama with special worship, devotional music, and discourses.", href: "/events" },
 ];
 
 const recentEvents = [
@@ -354,7 +354,7 @@ export default function Home() {
           {upcomingEvents.map((ev) => (
             <Link key={ev.title} href={ev.href || "/events"} className="reveal activity-card" style={{ display: "flex", textDecoration: "none", overflow: "hidden", maxWidth: "1200px", margin: "0 auto", background: "#fff", boxShadow: "0 8px 30px rgba(0,0,0,0.08)", minHeight: "380px" }}>
               <div style={{ position: "relative", width: "55%", flexShrink: 0, overflow: "hidden" }}>
-                <Image src={ev.image} alt={ev.title} fill className="object-cover transition-transform duration-500" sizes="(max-width: 768px) 100vw, 660px" />
+                <Image src={ev.image} alt={ev.title} fill className="object-cover transition-transform duration-500" style={{ objectPosition: ev.imagePosition || "center" }} sizes="(max-width: 768px) 100vw, 660px" />
                 <div style={{ position: "absolute", bottom: "24px", left: "24px", background: "#1A2F2F", color: "#fff", padding: "12px 22px", fontSize: "14px", fontWeight: 600, letterSpacing: "0.5px" }}>
                   {ev.date}
                 </div>
