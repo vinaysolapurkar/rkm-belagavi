@@ -200,7 +200,7 @@ export default function JapaYajnaPage() {
                 marginTop: "8px",
                 letterSpacing: "0.5px",
               }}>
-                0831-2405172 &nbsp;/&nbsp; 2402498
+                0831-297 0320 &nbsp;/&nbsp; 297 0321
               </p>
             </div>
           </div>

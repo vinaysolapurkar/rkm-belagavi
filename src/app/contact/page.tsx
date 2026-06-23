@@ -1,7 +1,6 @@
-import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import SectionHeading from "@/components/SectionHeading";
 import SubpageLayout from "@/components/SubpageLayout";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
   title: "Contact – RAMAKRISHNA MISSION ASHRAMA, BELAGAVI",
@@ -99,121 +98,7 @@ export default function ContactPage() {
             <div className="reveal-right">
               <h2 style={{ fontSize: "30px", fontWeight: 700, color: "#2D2A26", marginBottom: "30px" }}>Send a Message</h2>
 
-              <form style={{ display: "flex", flexDirection: "column", gap: "20px" }} action="#" method="POST">
-                <div>
-                  <label htmlFor="name" style={{ display: "block", fontSize: "14px", fontWeight: 600, color: "#2D2A26", marginBottom: "6px" }}>
-                    Your Name <span style={{ color: "#C4922A" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Enter your name"
-                    style={{
-                      width: "100%",
-                      padding: "12px 16px",
-                      border: "1px solid #e0d5cc",
-                      fontSize: "15px",
-                      color: "#2D2A26",
-                      outline: "none",
-                      transition: "border-color 0.3s, box-shadow 0.3s",
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" style={{ display: "block", fontSize: "14px", fontWeight: 600, color: "#2D2A26", marginBottom: "6px" }}>
-                    Your Email <span style={{ color: "#C4922A" }}>*</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="Enter your email address"
-                    style={{
-                      width: "100%",
-                      padding: "12px 16px",
-                      border: "1px solid #e0d5cc",
-                      fontSize: "15px",
-                      color: "#2D2A26",
-                      outline: "none",
-                      transition: "border-color 0.3s, box-shadow 0.3s",
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" style={{ display: "block", fontSize: "14px", fontWeight: 600, color: "#2D2A26", marginBottom: "6px" }}>
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="Your phone number (optional)"
-                    style={{
-                      width: "100%",
-                      padding: "12px 16px",
-                      border: "1px solid #e0d5cc",
-                      fontSize: "15px",
-                      color: "#2D2A26",
-                      outline: "none",
-                      transition: "border-color 0.3s, box-shadow 0.3s",
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" style={{ display: "block", fontSize: "14px", fontWeight: 600, color: "#2D2A26", marginBottom: "6px" }}>
-                    Subject <span style={{ color: "#C4922A" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    required
-                    placeholder="Subject of your message"
-                    style={{
-                      width: "100%",
-                      padding: "12px 16px",
-                      border: "1px solid #e0d5cc",
-                      fontSize: "15px",
-                      color: "#2D2A26",
-                      outline: "none",
-                      transition: "border-color 0.3s, box-shadow 0.3s",
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" style={{ display: "block", fontSize: "14px", fontWeight: 600, color: "#2D2A26", marginBottom: "6px" }}>
-                    Your Message <span style={{ color: "#C4922A" }}>*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    required
-                    placeholder="Write your message here..."
-                    style={{
-                      width: "100%",
-                      padding: "12px 16px",
-                      border: "1px solid #e0d5cc",
-                      fontSize: "15px",
-                      color: "#2D2A26",
-                      outline: "none",
-                      resize: "vertical",
-                      transition: "border-color 0.3s, box-shadow 0.3s",
-                    }}
-                  />
-                </div>
-
-                <button type="submit" className="btn-orange" style={{ width: "100%", textAlign: "center", padding: "14px 28px", fontSize: "15px" }}>
-                  Send Message
-                </button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </div>
