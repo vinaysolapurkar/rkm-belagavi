@@ -2,10 +2,15 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import SubpageLayout from "@/components/SubpageLayout";
+import DonateForm from "@/components/DonateForm";
 
 export const metadata = {
   title: "Give Online – RAMAKRISHNA MISSION ASHRAMA, BELAGAVI",
 };
+
+// The online form appears only once the Zoho Payments credentials are set in Vercel.
+const onlineGivingReady = ["ZOHO_ACCOUNT_ID", "ZOHO_API_KEY", "ZOHO_CLIENT_ID", "ZOHO_CLIENT_SECRET", "ZOHO_REFRESH_TOKEN"]
+  .every((k) => process.env[k]);
 
 export default function DonatePage() {
   return (
@@ -54,11 +59,25 @@ export default function DonatePage() {
         </div>
       </section>
 
-      {/* How to Donate */}
-      <section style={{ padding: "70px 0", background: "#F3EDE4" }}>
+      {/* Give Online */}
+      {onlineGivingReady && (
+      <section id="give-online" style={{ padding: "70px 0", background: "#F3EDE4" }}>
         <div className="site-container">
           <div className="reveal">
-            <SectionHeading title="How to Donate" />
+            <SectionHeading title="Donate Online" />
+          </div>
+          <div className="reveal" style={{ maxWidth: "720px", margin: "0 auto", background: "#fff", border: "1px solid #e0d5cc", padding: "32px", boxShadow: "0 2px 15px rgba(0,0,0,0.05)" }}>
+            <DonateForm />
+          </div>
+        </div>
+      </section>
+      )}
+
+      {/* Other Ways to Donate */}
+      <section style={{ padding: "70px 0", background: onlineGivingReady ? undefined : "#F3EDE4" }}>
+        <div className="site-container">
+          <div className="reveal">
+            <SectionHeading title={onlineGivingReady ? "Other Ways to Donate" : "How to Donate"} />
           </div>
           <div className="stagger-children" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px", maxWidth: "900px", margin: "0 auto" }}>
             {/* Bank Transfer */}
@@ -104,7 +123,7 @@ export default function DonatePage() {
       </section>
 
       {/* Tax Exemption */}
-      <section style={{ padding: "70px 0" }}>
+      <section style={{ padding: "70px 0", background: onlineGivingReady ? "#F3EDE4" : undefined }}>
         <div className="site-container">
           <div className="reveal">
             <SectionHeading title="Income Tax Exemption (Section 80G)" />
@@ -130,7 +149,7 @@ export default function DonatePage() {
       </section>
 
       {/* FCRA */}
-      <section style={{ padding: "70px 0", background: "#F3EDE4" }}>
+      <section style={{ padding: "70px 0", background: onlineGivingReady ? undefined : "#F3EDE4" }}>
         <div className="site-container">
           <div className="reveal">
             <SectionHeading title="Foreign Donations (FCRA)" />
@@ -162,7 +181,7 @@ export default function DonatePage() {
       </section>
 
       {/* Contact CTA */}
-      <section style={{ padding: "70px 0" }}>
+      <section style={{ padding: "70px 0", background: onlineGivingReady ? "#F3EDE4" : undefined }}>
         <div className="site-container">
           <div className="reveal" style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto" }}>
             <p style={{ fontSize: "16px", color: "#5A5650", lineHeight: 1.7, marginBottom: "24px" }}>
