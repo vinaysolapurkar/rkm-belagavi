@@ -129,7 +129,11 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div style={{ borderTop: "1px solid #333" }}>
-          <div className="site-container" style={{ padding: "18px 0", textAlign: "center", fontSize: "12px", color: "#777" }}>
+          <div className="site-container" style={{ paddingTop: "18px", paddingBottom: "18px", textAlign: "center", fontSize: "12px", color: "#777" }}>
+            <p style={{ marginBottom: "6px" }}>
+              <span style={{ whiteSpace: "nowrap" }}>Registered Legal Name: Ramakrishna Mission</span>{" "}
+              | <span style={{ whiteSpace: "nowrap" }}>GSTIN: 29AAAAR1077P1ZZ</span>
+            </p>
             &copy; {new Date().getFullYear()} Ramakrishna Mission Ashrama, Belagavi. All rights reserved.
           </div>
         </div>

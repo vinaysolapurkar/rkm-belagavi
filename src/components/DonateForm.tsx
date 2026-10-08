@@ -20,6 +20,8 @@ declare global {
 
 const SCRIPT_SRC = "https://static.zohocdn.com/zpay/zpay-js/v1/zpayments.js";
 const PRESETS = [501, 1001, 2501, 5001, 10001];
+// PAN is mandatory above this amount (₹); the server enforces the same rule.
+const PAN_REQUIRED_ABOVE = 2000;
 const PURPOSES = [
   "General Fund",
   "Annual Celebrations",
@@ -64,6 +66,7 @@ export default function DonateForm() {
   const [amount, setAmount] = useState<string>("1001");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  const panRequired = Number(amount) > PAN_REQUIRED_ABOVE;
   const [receipt, setReceipt] = useState<{ amount: string; paymentId: string } | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -227,10 +230,13 @@ export default function DonateForm() {
           <input id="d-phone" name="phone" type="tel" required maxLength={15} pattern="[0-9+ ]{10,15}" style={inputStyle} />
         </div>
         <div>
-          <label htmlFor="d-pan" style={labelStyle}>PAN (for 80G receipt)</label>
+          <label htmlFor="d-pan" style={labelStyle}>
+            PAN {panRequired ? <span style={{ color: "#C4922A" }}>*</span> : "(for 80G receipt)"}
+          </label>
           <input
             id="d-pan"
             name="pan"
+            required={panRequired}
             maxLength={10}
             pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]"
             placeholder="ABCDE1234F"
