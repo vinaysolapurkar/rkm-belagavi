@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { PURPOSES } from "@/lib/donation";
 
 type Status = "idle" | "processing" | "success" | "pending" | "error";
 
@@ -20,16 +21,6 @@ declare global {
 
 const SCRIPT_SRC = "https://static.zohocdn.com/zpay/zpay-js/v1/zpayments.js";
 const PRESETS = [501, 1001, 2501, 5001, 10001];
-// PAN is mandatory above this amount (₹); the server enforces the same rule.
-const PAN_REQUIRED_ABOVE = 2000;
-const PURPOSES = [
-  "General Fund",
-  "Annual Celebrations",
-  "Student Scholarships",
-  "Sri Sharada Netralaya (Eye Care)",
-  "Relief Work",
-  "Swami Vivekananda Memorial",
-];
 
 const inputStyle: React.CSSProperties = {
   width: "100%",
@@ -49,6 +40,17 @@ const labelStyle: React.CSSProperties = {
   marginBottom: "6px",
 };
 
+// Zoho asks for one widget instance per page. Creating a new one on every
+// click left the previous popup (with the old amount) stacked on top.
+let widget: ZPaymentsInstance | null = null;
+
+async function getWidget(accountId: string, apiKey: string): Promise<ZPaymentsInstance> {
+  if (widget) return widget;
+  await loadScript();
+  widget = new window.ZPayments!({ account_id: accountId, domain: "IN", otherOptions: { api_key: apiKey } });
+  return widget;
+}
+
 function loadScript(): Promise<void> {
   if (window.ZPayments) return Promise.resolve();
   return new Promise((resolve, reject) => {
@@ -66,7 +68,6 @@ export default function DonateForm() {
   const [amount, setAmount] = useState<string>("1001");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
-  const panRequired = Number(amount) > PAN_REQUIRED_ABOVE;
   const [receipt, setReceipt] = useState<{ amount: string; paymentId: string } | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -85,12 +86,7 @@ export default function DonateForm() {
       const session = await sessionRes.json();
       if (!sessionRes.ok) throw new Error(session.error);
 
-      await loadScript();
-      instance = new window.ZPayments!({
-        account_id: session.accountId,
-        domain: "IN",
-        otherOptions: { api_key: session.apiKey },
-      });
+      instance = await getWidget(session.accountId, session.apiKey);
 
       const result = await instance.requestPaymentMethod({
         amount: String(amount),
@@ -231,12 +227,12 @@ export default function DonateForm() {
         </div>
         <div>
           <label htmlFor="d-pan" style={labelStyle}>
-            PAN {panRequired ? <span style={{ color: "#C4922A" }}>*</span> : "(for 80G receipt)"}
+            PAN <span style={{ color: "#C4922A" }}>*</span>
           </label>
           <input
             id="d-pan"
             name="pan"
-            required={panRequired}
+            required
             maxLength={10}
             pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]"
             placeholder="ABCDE1234F"

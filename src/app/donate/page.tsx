@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
@@ -11,6 +13,10 @@ export const metadata = {
 // The online form appears only once the Zoho Payments credentials are set in Vercel.
 const onlineGivingReady = ["ZOHO_ACCOUNT_ID", "ZOHO_API_KEY", "ZOHO_CLIENT_ID", "ZOHO_CLIENT_SECRET", "ZOHO_REFRESH_TOKEN"]
   .every((k) => process.env[k]);
+
+// The online hundi block appears once the Ashrama's hundi UPI QR is saved here.
+const HUNDI_QR = "/images/hundi-qr.png";
+const hundiReady = fs.existsSync(path.join(process.cwd(), "public", HUNDI_QR));
 
 export default function DonatePage() {
   return (
@@ -69,6 +75,30 @@ export default function DonatePage() {
           <div className="reveal" style={{ maxWidth: "720px", margin: "0 auto", background: "#fff", border: "1px solid #e0d5cc", padding: "32px", boxShadow: "0 2px 15px rgba(0,0,0,0.05)" }}>
             <DonateForm />
           </div>
+
+          {hundiReady && (
+            <div className="reveal" style={{ maxWidth: "720px", margin: "30px auto 0", background: "#fff", border: "1px dashed #c9b79c", padding: "28px 32px", display: "flex", flexWrap: "wrap", gap: "24px", alignItems: "center" }}>
+              <div style={{ flex: "1 1 280px" }}>
+                <h3 style={{ fontSize: "19px", fontWeight: 700, color: "#2D2A26", marginBottom: "10px" }}>
+                  Prefer not to share your PAN? Offer to the Online Hundi
+                </h3>
+                <p style={{ fontSize: "15px", color: "#5A5650", lineHeight: 1.7, marginBottom: "10px" }}>
+                  Scan this QR code with any UPI app and offer any amount. No name, email or other
+                  details are needed.
+                </p>
+                <p style={{ fontSize: "14px", color: "#2D2A26", fontWeight: 600, lineHeight: 1.6, background: "#F3EDE4", borderLeft: "3px solid #C4922A", padding: "10px 14px" }}>
+                  No receipt will be issued for hundi offerings. They are treated as hundi
+                  collection and cannot be assigned to a specific purpose.
+                </p>
+              </div>
+              <div style={{ flex: "0 0 auto", margin: "0 auto", textAlign: "center" }}>
+                <img src={HUNDI_QR} alt="Online Hundi UPI QR code" width={200} height={200} style={{ width: "200px", height: "auto", border: "1px solid #e0d5cc" }} />
+                <a href={HUNDI_QR} download="RKM-Belagavi-Hundi-QR.png" style={{ display: "block", marginTop: "8px", fontSize: "13px", color: "#2C2C2C", fontWeight: 600 }}>
+                  Download QR
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </section>
       )}

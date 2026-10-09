@@ -1,19 +1,8 @@
 import { NextResponse } from "next/server";
 import { zohoApi, zohoEnv } from "@/lib/zoho";
+import { PAN_PATTERN, PURPOSES } from "@/lib/donation";
 
 export const runtime = "nodejs";
-
-const PURPOSES = [
-  "General Fund",
-  "Annual Celebrations",
-  "Student Scholarships",
-  "Sri Sharada Netralaya (Eye Care)",
-  "Relief Work",
-  "Swami Vivekananda Memorial",
-];
-
-// PAN is mandatory above this amount (₹).
-const PAN_REQUIRED_ABOVE = 2000;
 
 const clip = (v: unknown, n: number) => String(v ?? "").trim().slice(0, n);
 
@@ -35,11 +24,10 @@ export async function POST(req: Request) {
   if (!name || !/^\S+@\S+\.\S+$/.test(email)) {
     return NextResponse.json({ error: "Please enter your name and a valid email." }, { status: 400 });
   }
-  if (amount > PAN_REQUIRED_ABOVE && !pan) {
-    return NextResponse.json({ error: "PAN is required for donations above ₹2,000." }, { status: 400 });
-  }
-  if (pan && !/^[A-Z]{5}\d{4}[A-Z]$/.test(pan)) {
-    return NextResponse.json({ error: "PAN should look like ABCDE1234F." }, { status: 400 });
+  // PAN is mandatory: every online donation gets an 80G-eligible receipt.
+  // Donors who prefer not to share it use the online hundi QR instead.
+  if (!PAN_PATTERN.test(pan)) {
+    return NextResponse.json({ error: "Please enter a valid PAN, e.g. ABCDE1234F." }, { status: 400 });
   }
 
   const reference = `DON-${Date.now().toString(36).toUpperCase()}`;
@@ -54,7 +42,7 @@ export async function POST(req: Request) {
         reference_number: reference,
         meta_data: [
           { key: "donor_name", value: name },
-          { key: "pan", value: pan || "not given" },
+          { key: "pan", value: pan },
           { key: "address", value: address || "not given" },
           { key: "purpose", value: purpose },
           { key: "phone", value: phone || "not given" },
