@@ -16,6 +16,10 @@ const onlineGivingReady = ["ZOHO_ACCOUNT_ID", "ZOHO_API_KEY", "ZOHO_CLIENT_ID", 
 
 // The online hundi block appears once the Ashrama's hundi UPI QR is saved here.
 const HUNDI_QR = "/images/hundi-qr.png";
+// Same signed Bank of Baroda merchant link the hundi QR encodes (from the e-Hundi standee).
+const HUNDI_UPI_ID = "ramak96866406@barodampay";
+const HUNDI_UPI_LINK =
+  "upi://pay?pa=ramak96866406@barodampay&pn=RAMAKRISHNA%20MISSION%20ASHRAMA&mc=&tn=Verified%20Merchant&am=&cu=INR&url=&mode=02&orgid=159012&mid=&msid=&mtid=&sign=MEUCIAKEBXjkchgRJCSPhOBGk7Gxt8UjjMeRZXZ8c6IM9cEDAiEAmvrb1c6a1Y6oJsqhBtEYFO+fehncKCwo+P+YwHafkF4=";
 const hundiReady = fs.existsSync(path.join(process.cwd(), "public", HUNDI_QR));
 
 export default function DonatePage() {
@@ -83,8 +87,8 @@ export default function DonatePage() {
                   Prefer not to share your PAN? Offer to the Online Hundi
                 </h3>
                 <p style={{ fontSize: "15px", color: "#5A5650", lineHeight: 1.7, marginBottom: "10px" }}>
-                  Scan this QR code with any UPI app and offer any amount. No name, email or other
-                  details are needed.
+                  Scan this QR code with any UPI app, or tap &ldquo;Pay with UPI app&rdquo; on your
+                  phone, and offer any amount. No name, email or other details are needed.
                 </p>
                 <p style={{ fontSize: "14px", color: "#2D2A26", fontWeight: 600, lineHeight: 1.6, background: "#F3EDE4", borderLeft: "3px solid #C4922A", padding: "10px 14px" }}>
                   No receipt will be issued for hundi offerings. They are treated as hundi
@@ -92,7 +96,13 @@ export default function DonatePage() {
                 </p>
               </div>
               <div style={{ flex: "0 0 auto", margin: "0 auto", textAlign: "center" }}>
-                <img src={HUNDI_QR} alt="Online Hundi UPI QR code" width={200} height={200} style={{ width: "200px", height: "auto", border: "1px solid #e0d5cc" }} />
+                <img src={HUNDI_QR} alt="Online Hundi UPI QR code" width={240} height={240} style={{ width: "240px", maxWidth: "100%", height: "auto", border: "1px solid #e0d5cc" }} />
+                <p style={{ marginTop: "8px", fontSize: "13px", color: "#5A5650" }}>
+                  UPI ID: <strong style={{ color: "#2D2A26" }}>{HUNDI_UPI_ID}</strong>
+                </p>
+                <a href={HUNDI_UPI_LINK} className="btn-orange" style={{ display: "block", marginTop: "10px", padding: "10px 16px", fontSize: "12px" }}>
+                  Pay with UPI app
+                </a>
                 <a href={HUNDI_QR} download="RKM-Belagavi-Hundi-QR.png" style={{ display: "block", marginTop: "8px", fontSize: "13px", color: "#2C2C2C", fontWeight: 600 }}>
                   Download QR
                 </a>
