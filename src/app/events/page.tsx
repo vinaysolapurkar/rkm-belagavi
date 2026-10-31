@@ -189,7 +189,7 @@ export default function EventsPage() {
               { iso: "2026-09-14", date: "14 September 2026", day: "Monday", title: "Vinayaka Chaturthi", desc: "Birth anniversary of Lord Ganesha" },
               { iso: "2026-10-19", date: "19 October 2026", day: "Monday", title: "Durgashtami", desc: "Eighth day of Navaratri — special worship of Goddess Durga" },
               { iso: "2026-11-08", date: "8 November 2026", day: "Sunday", title: "Kali Puja", desc: "Worship of the Divine Mother Kali on the new-moon night of Kartika" },
-              { iso: "2026-12-13", date: "13 December 2026", day: "Sunday", title: "Sri Sarada Devi Jayanti", desc: "Birth anniversary of the Holy Mother Sri Sarada Devi" },
+              { iso: "2026-12-30", date: "30 December 2026", day: "Wednesday", title: "Sri Sarada Devi Jayanti", desc: "Birth anniversary of the Holy Mother Sri Sarada Devi" },
               { iso: "2027-01-01", date: "1 January 2027", day: "Friday", title: "Kalpataru Day", desc: "Commemoration of Sri Ramakrishna's blessing of devotees at Cossipore Garden House (1886)" },
               { iso: "2027-01-12", date: "12 January 2027", day: "Tuesday", title: "National Youth Day", desc: "Birth anniversary of Swami Vivekananda — observed nationally" },
               { iso: "2027-01-28", date: "28 January 2027", day: "Thursday", title: "Swami Vivekananda Jayanti", desc: "Tithi-based birth anniversary of Swami Vivekananda" },
