@@ -176,7 +176,7 @@ async function askClaude(prompt, resumeId) {
     "--restricted",
     "--strict-mcp-config",
     "--tools", "Read,Edit,Write,Glob,Grep",
-    "--permission-mode", "dontAsk",
+    "--permission-mode", "acceptEdits",
     "--add-dir", UPLOADS_DIR,
     "--model", config.model || "sonnet",
     "--append-system-prompt", RULES,
