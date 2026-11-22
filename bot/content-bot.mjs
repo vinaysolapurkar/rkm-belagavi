@@ -194,6 +194,8 @@ function validatePage(page, where, problems) {
   });
 }
 
+const OPTIONAL_KEYS = new Set(["hidden", "subtitle", "caption", "author"]);
+
 // Every list may only grow (new items) — removing items is not allowed, they
 // must be hidden instead. Top-level sections may not be added or removed.
 function compareShape(before, after, where, problems) {
@@ -205,6 +207,9 @@ function compareShape(before, after, where, problems) {
   if (before && typeof before === "object") {
     if (!after || typeof after !== "object" || Array.isArray(after)) return problems.push(`${where} changed type`);
     for (const k of Object.keys(before)) {
+      // Removing the "hidden" mark is how something is brought back; optional
+      // fields (a page's subtitle) may be dropped too.
+      if (!(k in after) && OPTIONAL_KEYS.has(k)) continue;
       if (!(k in after)) problems.push(`${where}.${k} was removed`);
       else compareShape(before[k], after[k], `${where}.${k}`, problems);
     }
