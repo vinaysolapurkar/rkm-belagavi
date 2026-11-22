@@ -98,6 +98,8 @@ const userName = (id) => config.allowed_users[String(id)];
 async function syncCheckout() {
   await sh("git", ["fetch", "--quiet", "origin", BRANCH]);
   await sh("git", ["reset", "--quiet", "--hard", `origin/${BRANCH}`]);
+  // A reset leaves new files behind (e.g. a half-made page) — remove them too.
+  await sh("git", ["clean", "-fdq", "--", "src/content"]);
 }
 
 async function changedFiles() {
@@ -397,7 +399,7 @@ async function applyChange(chatId) {
   await say(chatId, "🙏 Updating the website… (about 2–3 minutes)");
   const stopTyping = keepTyping(chatId);
   const fail = async (userMsg, adminMsg) => {
-    await sh("git", ["reset", "--quiet", "--hard", `origin/${BRANCH}`]).catch(() => {});
+    await syncCheckout().catch(() => {});
     await say(chatId, userMsg);
     if (adminMsg) await say(config.admin_id, adminMsg);
   };
@@ -439,7 +441,8 @@ async function applyChange(chatId) {
     }
 
     // 4. Save to GitHub first, then update the website.
-    await sh("git", ["add", "src/content", "public/images/uploads"]);
+    await sh("git", ["add", "--all", "--", "src/content"]);
+    if (fs.existsSync(UPLOADS_DIR) && fs.readdirSync(UPLOADS_DIR).length) await sh("git", ["add", "--all", "--", "public/images/uploads"]);
     const msg = `Content: ${prop.summary}\n\nApproved by ${convo.who} via the Telegram content bot.\n\nRequest:\n${convo.requests.map((r) => `> ${r.replace(/\n/g, "\n> ")}`).join("\n")}\n\nChanges:\n${prop.plan.map((p) => `- ${p}`).join("\n")}`;
     await sh("git", ["-c", "user.name=RKM Content Bot", "-c", `user.email=${config.git_email}`, "commit", "-q", "-m", msg]);
     await sh("git", ["push", "--quiet", "origin", `HEAD:${BRANCH}`]);
