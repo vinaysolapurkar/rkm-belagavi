@@ -1,0 +1,13 @@
+{
+  "title": "Example Page",
+  "subtitle": "A template showing every kind of block a page can use. Hidden, so it never appears on the site.",
+  "hidden": true,
+  "blocks": [
+    { "type": "heading", "text": "A section heading" },
+    { "type": "paragraph", "text": "A paragraph of text. Use **bold** for emphasis and [a link](/events) to other pages." },
+    { "type": "image", "src": "/images/ashrama.jpg", "alt": "The Ashrama", "caption": "An optional caption under the photo" },
+    { "type": "list", "items": ["First point", "Second point"] },
+    { "type": "quote", "text": "Arise, awake, and stop not till the goal is reached.", "author": "Swami Vivekananda" },
+    { "type": "button", "text": "Contact the Ashrama", "href": "/contact" }
+  ]
+}

@@ -114,7 +114,7 @@ async function gatekeep() {
   const files = await changedFiles();
   const problems = [];
   for (const f of files) {
-    const okContent = /^src\/content\/[\w-]+\.json$/.test(f);
+    const okContent = /^src\/content\/[\w-]+\.json$/.test(f) || /^src\/content\/pages\/[a-z0-9-]+\.json$/.test(f);
     const okUpload = /^public\/images\/uploads\/[\w.-]+\.(jpe?g|png|webp)$/i.test(f);
     if (!okContent && !okUpload) problems.push(`not allowed to change ${f}`);
   }
@@ -126,17 +126,60 @@ async function gatekeep() {
       problems.push(`${f} is not valid JSON`);
       continue;
     }
+    const isPage = f.startsWith("src/content/pages/");
+    if (isPage) validatePage(after, f, problems);
     let before = null;
     try {
       const { stdout } = await sh("git", ["show", `HEAD:${f}`]);
       before = JSON.parse(stdout);
     } catch {
-      problems.push(`new content files are not allowed (${f})`);
+      // Only whole new pages may be added; their address must be free.
+      if (!isPage) problems.push(`new content files are not allowed (${f})`);
+      else if (RESERVED_SLUGS().has(path.basename(f, ".json"))) problems.push(`page address /${path.basename(f, ".json")} is already used by the site`);
       continue;
     }
     compareShape(before, after, f, problems);
   }
   return { files, problems };
+}
+
+// Addresses the site already uses (its own pages and system paths).
+const RESERVED_SLUGS = () =>
+  new Set([
+    ...fs.readdirSync(path.join(SITE, "src/app"), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name),
+    "images", "_next", "favicon.ico", "robots.txt", "sitemap.xml", "admin", "login",
+  ]);
+
+// A page may only use the fixed block types — no code, no raw HTML.
+const BLOCK_FIELDS = {
+  heading: { text: "string" },
+  paragraph: { text: "string" },
+  image: { src: "string", alt: "string", caption: "string?" },
+  list: { items: "strings" },
+  quote: { text: "string", author: "string?" },
+  button: { text: "string", href: "string" },
+};
+function validatePage(page, where, problems) {
+  const bad = (m) => problems.push(`${where}: ${m}`);
+  if (!page || typeof page !== "object" || Array.isArray(page)) return bad("must be an object");
+  for (const k of Object.keys(page)) if (!["title", "subtitle", "hidden", "blocks"].includes(k)) bad(`unknown field "${k}"`);
+  if (typeof page.title !== "string" || !page.title.trim()) bad("needs a title");
+  if (page.subtitle !== undefined && typeof page.subtitle !== "string") bad("subtitle must be text");
+  if (page.hidden !== undefined && typeof page.hidden !== "boolean") bad("hidden must be true/false");
+  if (!Array.isArray(page.blocks)) return bad("needs a blocks list");
+  page.blocks.forEach((b, i) => {
+    const spec = BLOCK_FIELDS[b?.type];
+    if (!spec) return bad(`block ${i}: unknown type "${b?.type}"`);
+    for (const k of Object.keys(b)) if (k !== "type" && k !== "hidden" && !(k in spec)) bad(`block ${i}: unknown field "${k}"`);
+    for (const [k, t] of Object.entries(spec)) {
+      const v = b[k];
+      if (t === "string?" && v === undefined) continue;
+      if (t === "strings" ? !(Array.isArray(v) && v.every((x) => typeof x === "string")) : typeof v !== "string") bad(`block ${i}: "${k}" is missing or wrong`);
+    }
+    if (b.type === "image" && (!/^\/images\/[\w./-]+\.(jpe?g|png|webp)$/i.test(b.src || "") || b.src.includes("..") || !fs.existsSync(path.join(SITE, "public", b.src))))
+      bad(`block ${i}: photo must be one of the site's images`);
+    if (b.type === "button" && !/^(\/|https:\/\/|mailto:|tel:)/.test(b.href || "")) bad(`block ${i}: button link not allowed`);
+  });
 }
 
 // Every list may only grow (new items) — removing items is not allowed, they

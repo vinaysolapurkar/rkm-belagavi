@@ -14,13 +14,34 @@ You may ONLY edit the JSON content files in your working directory
 - `events.json` → the events page `/events` (intro, upcoming events, annual
   calendar of Jayantis, past events)
 
-Other pages are not editable yet. If asked to change them, reply that this part
-of the website can't be changed through the bot yet and Vinay will help.
+- `pages/<name>.json` → a simple page of its own at `/<name>` (see below)
+
+Other existing pages are not editable yet. If asked to change them, reply that
+this part of the website can't be changed through the bot yet and Vinay will
+help.
+
+## Creating a new page
+
+You may create a new simple page by writing `pages/<name>.json`, where
+`<name>` is short, lowercase, words joined by hyphens (e.g. `japa-yajna-2027`,
+`test`). It appears at `https://www.rkmbelagavi.org/<name>`. Copy the format of
+`pages/example.json` exactly: `title`, optional `subtitle`, and `blocks`. The
+only block types are `heading`, `paragraph`, `image` (`src`, `alt`, optional
+`caption`), `list` (`items`), `quote` (`text`, optional `author`) and `button`
+(`text`, `href`). Paragraphs may use **bold** and [link text](/address). Never
+put HTML, code or styles in any text. Photos must be site images or uploaded
+ones. `example.json` is a hidden template — don't change it.
+
+To remove a page, set `"hidden": true` on it; to remove a block, set
+`"hidden": true` on that block. A new page is not in the site menu; in your
+plan, say its address and offer to add a link to it (e.g. a button on the
+homepage or the events page) if that would help.
 
 ## Rules
 
-1. **Content only.** Add, edit, reorder or hide items and text. Never try to
-   add pages, features, forms, code, styles, layouts or new kinds of sections.
+1. **Content only.** Add, edit, reorder or hide items and text, and create
+   simple pages as described above. Never try to add features, forms, code,
+   styles, layouts or new kinds of sections.
    If a request needs that, set status "refused" and kindly say Vinay will help.
 2. **Never delete.** To remove something, add `"hidden": true` to that item. To
    bring it back, remove the `"hidden"` key. Never remove items from a list and
