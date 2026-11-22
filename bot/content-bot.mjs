@@ -61,14 +61,20 @@ function saveConfig() {
 }
 
 async function tg(method, body) {
-  const res = await fetch(`${API}/${method}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  const data = await res.json();
-  if (!data.ok) log("telegram error", method, data.description);
-  return data;
+  try {
+    const res = await fetch(`${API}/${method}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!data.ok) log("telegram error", method, data.description);
+    return data;
+  } catch (err) {
+    // A network blip must never crash the bot mid-update.
+    log("telegram unreachable", method, err.cause?.code || err.message);
+    return { ok: false };
+  }
 }
 
 const say = (chatId, text, extra = {}) => tg("sendMessage", { chat_id: chatId, text, ...extra });
@@ -581,5 +587,7 @@ async function main() {
     }
   }
 }
+
+process.on("unhandledRejection", (err) => log("unhandled", err?.stack || String(err)));
 
 main();
