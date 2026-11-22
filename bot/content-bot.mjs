@@ -77,7 +77,11 @@ async function tg(method, body) {
   }
 }
 
-const say = (chatId, text, extra = {}) => tg("sendMessage", { chat_id: chatId, text, ...extra });
+// Always show complete web addresses: "/test" → "https://www.rkmbelagavi.org/test".
+const fullLinks = (text) =>
+  String(text).replace(/(^|[\s("'“‘])\/((?:[a-z0-9-]+\/?)*[a-z0-9-]*(?:\.html)?)(?=$|[\s)"'”’.,;:!?])/gi, (m, pre, p) =>
+    ["undo", "cancel", "start", "help"].includes(p) ? m : `${pre}${LIVE_URL}/${p}`);
+const say = (chatId, text, extra = {}) => tg("sendMessage", { chat_id: chatId, text: fullLinks(text), ...extra });
 
 async function sendPhotos(chatId, files, caption) {
   const form = new FormData();
