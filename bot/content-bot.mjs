@@ -291,9 +291,43 @@ async function screenshots(pages, focus) {
 async function deploy() {
   const args = ["--yes", "--token", config.vercel_token];
   if (PRODUCTION) args.unshift("--prod");
-  const { stdout } = await sh("vercel", args, { timeout: 10 * 60 * 1000 });
-  return stdout.trim().split("\n").at(-1);
+  try {
+    const { stdout } = await sh("vercel", args, { timeout: 10 * 60 * 1000 });
+    return stdout.trim().split("\n").at(-1);
+  } catch (err) {
+    // The CLI can lose its connection while Vercel keeps building. Before
+    // calling it a failure, ask Vercel whether this commit actually went live.
+    if (PRODUCTION && (await waitUntilLive())) return LIVE_URL;
+    throw err;
+  }
 }
+
+async function waitUntilLive() {
+  const { stdout } = await sh("git", ["rev-parse", "HEAD"]);
+  const sha = stdout.trim();
+  for (let i = 0; i < 30; i++) {
+    try {
+      const res = await fetch(
+        `https://api.vercel.com/v6/deployments?projectId=${config.vercel_project_id}&teamId=${config.vercel_team_id}&target=production&limit=5`,
+        { headers: { Authorization: `Bearer ${config.vercel_token}` } }
+      );
+      const d = ((await res.json()).deployments || []).find((x) => x.meta?.githubCommitSha === sha);
+      if (d?.state === "READY") return true;
+      if (d && ["ERROR", "CANCELED"].includes(d.state)) return false;
+    } catch {}
+    await new Promise((r) => setTimeout(r, 10_000));
+  }
+  return false;
+}
+
+// Last few meaningful lines of a command's error — enough for the admin.
+const shortError = (err) =>
+  (err.stderr || err.message || String(err))
+    .split("\n")
+    .filter((l) => /error|fail|denied|refused|timed? ?out/i.test(l))
+    .slice(-3)
+    .join("\n")
+    .slice(0, 600) || String(err.message).slice(0, 300);
 
 // The live site must be a version GitHub already has, so any change the bot
 // makes sits on top of GitHub's history and can be rolled back from there.
@@ -443,7 +477,7 @@ async function applyChange(chatId) {
     try {
       await buildSite();
     } catch (err) {
-      return fail("Sorry, that change would have broken the website, so I've undone it. Vinay has been told.", `⚠️ Build failed for ${convo.who}: ${prop.summary}\n${(err.stderr || err.message).slice(-1500)}`);
+      return fail("Sorry, that change would have broken the website, so I've undone it. Vinay has been told.", `⚠️ Build failed for ${convo.who}: ${prop.summary}\n${shortError(err)}`);
     }
 
     // 4. Save to GitHub first, then update the website.
@@ -459,7 +493,7 @@ async function applyChange(chatId) {
       url = await deploy();
     } catch (err) {
       await say(chatId, "The change is saved, but the website didn't update. Vinay has been told and will put it live.");
-      return say(config.admin_id, `⚠️ Deploy failed after commit ${sha.trim()} (${prop.summary}):\n${(err.stderr || err.message).slice(-1500)}`);
+      return say(config.admin_id, `⚠️ Deploy failed after commit ${sha.trim()} (${prop.summary}). It is saved in GitHub; run npm run deploy.\n${shortError(err)}`);
     }
 
     state.history = [...(state.history || []), { sha: sha.trim(), summary: prop.summary, by: convo.who, at: Date.now() }].slice(-50);
@@ -482,22 +516,32 @@ async function applyChange(chatId) {
   }
 }
 
+// Reverse the most recent bot change, found in GitHub's history. Safe only if
+// no later commit touched website content (code-only commits are fine).
 async function undoLast(chatId) {
-  const last = (state.history || []).at(-1);
-  if (!last) return say(chatId, "There is no recent bot change to undo.");
   await syncCheckout();
-  const { stdout } = await sh("git", ["log", "-1", "--format=%h %an", `origin/${BRANCH}`]);
-  if (!stdout.includes("RKM Content Bot") || !stdout.startsWith(last.sha)) {
-    return say(chatId, "Someone has changed the website since the last bot change, so I can't undo it safely. Please ask Vinay.");
+  const { stdout: last } = await sh("git", ["log", "-1", "--author=RKM Content Bot", "--grep=^Content: ", "--format=%H%x09%s", `origin/${BRANCH}`]);
+  if (!last.trim()) return say(chatId, "There is no bot change to undo.");
+  const [sha, subject] = last.trim().split("\t");
+  const { stdout: later } = await sh("git", ["log", "--format=%h", `${sha}..origin/${BRANCH}`, "--", "src/content", "public/images/uploads"]);
+  if (later.trim()) return say(chatId, "The website's content has changed since the last bot update, so I can't undo it safely. Please ask Vinay.");
+  const summary = subject.replace(/^Content: /, "");
+  await say(chatId, `Undoing: "${summary}"… (about 2 minutes)`);
+  const stopTyping = keepTyping(chatId);
+  try {
+    await sh("git", ["-c", "user.name=RKM Content Bot", "-c", `user.email=${config.git_email}`, "revert", "--no-edit", sha]);
+    await sh("git", ["commit", "--amend", "-q", "-m", `Undo: ${summary}\n\nRequested by ${userName(chatId)} via /undo. Reverts ${sha.slice(0, 7)}.`]);
+    await sh("git", ["push", "--quiet", "origin", `HEAD:${BRANCH}`]);
+    await deploy();
+  } catch (err) {
+    await syncCheckout().catch(() => {});
+    await say(chatId, "Sorry, I couldn't undo it. Vinay has been told.");
+    return say(config.admin_id, `⚠️ /undo failed: ${shortError(err)}`);
+  } finally {
+    stopTyping();
   }
-  await say(chatId, `Undoing: "${last.summary}"… (about 2 minutes)`);
-  await sh("git", ["-c", "user.name=RKM Content Bot", "-c", `user.email=${config.git_email}`, "revert", "--no-edit", "HEAD"]);
-  await sh("git", ["push", "--quiet", "origin", `HEAD:${BRANCH}`]);
-  await deploy();
-  state.history.pop();
-  saveState();
-  await say(chatId, "↩️ Undone. The website is back to how it was before that change.");
-  if (!isAdmin(chatId)) await say(config.admin_id, `↩️ ${userName(chatId)} undid: ${last.summary}`);
+  await say(chatId, `↩️ Undone: "${summary}". The website is back to how it was before that change.`);
+  if (!isAdmin(chatId)) await say(config.admin_id, `↩️ ${userName(chatId)} undid: ${summary}`);
 }
 
 async function handleUpdate(u) {
