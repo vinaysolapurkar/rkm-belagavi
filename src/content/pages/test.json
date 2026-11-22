@@ -1,5 +1,6 @@
 {
   "title": "Test Page",
+  "hidden": true,
   "blocks": [
     { "type": "paragraph", "text": "This is a test page." }
   ]
