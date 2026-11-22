@@ -1,0 +1,120 @@
+{
+  "_about": "Homepage content. Items with \"hidden\": true are not shown on the site.",
+  "heroSlides": [
+    {
+      "image": "/images/Cropped-SVM-_E7A9941-1.jpg",
+      "title": "Swamiji stayed in this house for 9 days from",
+      "highlight": "Oct 19-27, 1892",
+      "subtitle": "as a guest of Haripada Mitra"
+    },
+    {
+      "image": "/images/Cropped-SVM-_E7A9941.jpg",
+      "title": "Swami Vivekananda Memorial",
+      "subtitle": "Swami Vivekananda Memorial at Swami Vivekananda Marg (Risaldar Galli), Belagavi. It is a sub-centre of Ramakrishna Mission Ashrama, Belagavi."
+    }
+  ],
+  "upcomingEvents": [
+    {
+      "date": "July 29, 2026",
+      "title": "Guru Purnima",
+      "image": "/images/Ramakrishna.jpg",
+      "imagePosition": "center top",
+      "desc": "Sacred day honouring the Guru and the lineage of spiritual teachers, observed at the Ashrama with special worship, devotional music, and discourses.",
+      "href": "/events"
+    }
+  ],
+  "recentEvents": [
+    {
+      "date": "Feb 6-8, 2026",
+      "title": "Annual Celebrations 2026",
+      "image": "/images/anual_celebration.jpg",
+      "desc": "Annual celebrations commemorating the spiritual legacy of Sri Ramakrishna, Holy Mother, and Swami Vivekananda."
+    },
+    {
+      "date": "Jan 12, 2026",
+      "title": "National Youth Day — Youth Convention",
+      "image": "/images/youth-day-2026.jpg",
+      "desc": "Celebrating Swami Vivekananda Jayanti with a vibrant Youth Convention featuring inspiring talks."
+    },
+    {
+      "date": "Nov 9, 2025",
+      "title": "Winter Relief",
+      "image": "/images/winter-relief.jpg",
+      "desc": "500 blankets distributed to corporation cleaning staff, with bhajans and spiritual discourse."
+    }
+  ],
+  "activities": [
+    {
+      "title": "Winter Relief — Nov 2025",
+      "image": "/images/winter-relief.jpg",
+      "excerpt": "500 blankets distributed to corporation cleaning staff, accompanied by bhajans and a spiritual discourse.",
+      "href": "/activities/welfare"
+    },
+    {
+      "title": "Parents' Workshop — Nov 2025",
+      "image": "/images/parents-workshop.jpg",
+      "excerpt": "A meaningful workshop for parents connected to Swami Vivekananda's teachings on character building.",
+      "href": "/activities/personality-development"
+    },
+    {
+      "title": "Flood Relief — August 2019",
+      "image": "/images/frelief42.jpg",
+      "excerpt": "Relief kits distributed to hundreds of families across 8 villages during the devastating Karnataka floods.",
+      "href": "/activities/relief"
+    },
+    {
+      "title": "Sharada Netralaya — Eye Care",
+      "image": "/images/home-ashrama.jpg",
+      "excerpt": "Free cataract surgeries and quality eye care for the community since 2006, particularly for the economically weaker sections.",
+      "href": "/activities/sharada-netralaya"
+    },
+    {
+      "title": "Scholarships Programme",
+      "image": "/images/Scholarships-1.jpg",
+      "excerpt": "Merit-cum-means scholarships distributed annually to college students across Karnataka since 2005.",
+      "href": "/activities/value-education"
+    },
+    {
+      "title": "Personality Development",
+      "image": "/images/youth-day-2026.jpg",
+      "excerpt": "Residential and non-residential camps covering meditation, yoga, concentration, public speaking, and leadership skills.",
+      "href": "/activities/personality-development"
+    }
+  ],
+  "quotes": [
+    {
+      "text": "“You have to grow from Inside Out. None can teach you. None can make you Spiritual. There is no other Teacher but your own Soul.”",
+      "author": "Swami Vivekananda"
+    },
+    {
+      "text": "“A Man is Not Poor without a Rupee But a Man is really Poor without a Dream and Ambition…”",
+      "author": "Swami Vivekananda"
+    },
+    {
+      "text": "“God is everywhere but He is most manifest in man. So serve man as God. That is as good as worshipping God.”",
+      "author": "Sri Ramakrishna"
+    }
+  ],
+  "quickLinks": [
+    {
+      "title": "Swami Vivekananda\nin Belagavi",
+      "image": "/images/ashrama.jpg",
+      "href": "/about/swamiji-in-belagavi"
+    },
+    {
+      "title": "The Ramakrishna\nOrder",
+      "image": "/images/Ramakrishna.jpg",
+      "href": "/about#order"
+    },
+    {
+      "title": "Become a Monk",
+      "image": "/images/monk.jpg",
+      "href": "/get-involved"
+    },
+    {
+      "title": "Become a Volunteer",
+      "image": "/images/ActivitiesoftheAshrama.jpg",
+      "href": "/activities/welfare"
+    }
+  ]
+}
