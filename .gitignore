@@ -38,3 +38,7 @@ node_modules/
 venv/
 .venv/
 __pycache__/
+
+# content bot dependencies (installed on the Mac mini)
+/bot/node_modules/
+/bot/package-lock.json
