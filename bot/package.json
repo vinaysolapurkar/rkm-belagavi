@@ -1,0 +1,9 @@
+{
+  "name": "rkm-content-bot",
+  "private": true,
+  "type": "module",
+  "description": "Telegram bot that lets the Ashrama edit website content",
+  "dependencies": {
+    "playwright-core": "^1.58.0"
+  }
+}
