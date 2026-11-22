@@ -1,6 +1,7 @@
 {
   "title": "Test Page",
   "blocks": [
-    { "type": "paragraph", "text": "This is a test page." }
+    { "type": "paragraph", "text": "This is a test page." },
+    { "type": "image", "src": "/images/uploads/20261122092148-6uzq.jpg", "alt": "Test page photo" }
   ]
 }
