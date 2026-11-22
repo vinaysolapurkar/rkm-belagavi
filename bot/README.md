@@ -5,16 +5,19 @@ messaging the Telegram bot in plain English. Runs on the Mac mini (`popeye`).
 
 ## How a change flows
 
-1. Message the bot (optionally with a photo).
-2. Claude edits `src/content/*.json` in a separate checkout (`~/rkm-bot/site`).
-   It runs in Claude Code's `--restricted` mode: no shell, no web, and file
-   tools confined to `src/content` and `public/images/uploads`.
-3. Gatekeeper (`gatekeep()`): only those files may change, JSON must parse, and
+1. Message the bot (optionally with a photo). Greetings get a friendly reply.
+2. **Plan** — Claude (read-only, `--restricted`) lists the exact changes in
+   plain words and the bot asks "Shall I update the website?" with a
+   **Yes / No** button. Replying with corrections produces a new plan.
+3. **Apply** (after Yes) — the checkout is reset to GitHub; the bot refuses if
+   the live site isn't a version GitHub has. Claude makes exactly the approved
+   changes, with file tools confined to `src/content` and
+   `public/images/uploads`.
+4. Gatekeeper (`gatekeep()`): only those files may change, JSON must parse,
    list items may only be added or hidden (`"hidden": true`), never removed.
-4. The site is built and screenshotted (desktop + phone); the bot sends the
-   preview with **Publish** / **Discard** buttons.
-5. Publish → commit (author "RKM Content Bot", message quotes the request) →
-   push to GitHub → `vercel --prod`. `/undo` reverts the last bot commit.
+5. The site is built; then the change is **committed and pushed to GitHub
+   first**, then deployed (`vercel --prod`). Screenshots of the result are sent.
+   `/undo` reverts the last bot commit and redeploys.
 
 Unknown Telegram users get a polite message; the admin gets an "Allow" button.
 
@@ -40,6 +43,8 @@ Unknown Telegram users get a polite message; the admin gets an "Allow" button.
   "git_email": "vinaysolapurkar@users.noreply.github.com",
   "branch": "main",
   "deploy": "production",
+  "vercel_project_id": "prj_kDzNJicG8Px9pzIRRm2EeRmTKEs7",
+  "vercel_team_id": "team_rj981fuTKJgDS10MjsONvzHN",
   "model": "sonnet"
 }
 ```
