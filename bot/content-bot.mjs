@@ -548,8 +548,11 @@ async function handleUpdate(u) {
 
 async function main() {
   log("bot starting");
-  state.convos ||= {};
+  // Start every conversation afresh after a restart: a resumed Claude session
+  // keeps the rules it began with, so old sessions would miss rule updates.
+  state.convos = {};
   delete state.pending;
+  saveState();
   await say(config.admin_id, "🟢 RKM website bot started.");
   for (;;) {
     let updates = [];
